@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clickable="true"
+    android:focusableInTouchMode="true"
+    android:background="#FFFFFF"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/view">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="용 단계"
+        android:textSize="30dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:id="@+id/level" />
+
+
+
+    <RelativeLayout
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:background="@drawable/check5"
+        android:clickable="false"
+        android:id="@+id/answersCorrectLayout"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="13dp"
+        >
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            style="?android:attr/borderlessButtonStyle"
+            android:id="@+id/answersCorrectButton"
+            android:clickable="true"/>
+        <TextView
+            android:textColor="#FFFFFF"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="30dp"
+            android:text="0"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/answersCorrect"
+            />
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/fire"
+            android:id="@+id/answersCorrectImage"
+            android:visibility="invisible"
+            />
+    </RelativeLayout>
+
+    <EditText
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:textAlignment="center"
+        android:textSize="40dp"
+        android:id="@+id/AnswerText"
+        android:layout_below="@+id/level"
+        android:layout_marginTop="40dp"
+        android:imeOptions="actionDone"
+        android:inputType="text"
+        android:background="@drawable/edittext5"
+        android:textCursorDrawable="@drawable/cursor"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:id="@+id/QuestionTextView"
+        style="@style/HeaderTextStyle"
+        android:layout_below="@id/AnswerText"
+        android:layout_marginTop="10dp"
+        android:layout_centerHorizontal="true"
+        android:textColor="#212121"/>
+
+
+
+    <RelativeLayout
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/QuestionTextView"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/hintbox5"
+        android:id="@+id/wordbox"
+        android:layout_centerHorizontal="true"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="[도움말]"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="3dp"
+            android:textSize="25dp"
+            android:layout_centerHorizontal="true"
+            android:textColor="#727272"
+            android:id="@+id/boxName"
+            android:visibility="visible"/>
+
+        <RelativeLayout
+            android:layout_width="120dp"
+            android:layout_height="60dp"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="20dp"
+            android:layout_below="@+id/boxName"
+            android:id="@+id/hintWord"
+            >
+
+            <TextView
+                android:layout_width="120dp"
+                android:layout_height="40dp"
+                android:id="@+id/textView"
+                android:gravity="center"
+                android:textSize="30dp"
+                android:layout_centerInParent="true"
+                android:textColor="#727272"
+                android:textStyle="bold" />
+            <TextView
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:layout_below="@+id/textView"
+                android:id="@+id/textbar1"
+                android:text=""
+                android:textColor="#E64A19"
+                android:layout_centerInParent="true"
+                android:textSize="2dp"
+                android:textStyle="bold"
+                android:background="@drawable/border5" />
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="10dp"
+            android:layout_below="@+id/boxName"
+            >
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:gravity="center"
+                android:textSize="0dp"
+                android:id="@+id/textView2"
+                android:layout_centerInParent="true"
+                android:textColor="#727272"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textView2"
+                android:id="@+id/textbar2"
+                android:text=""
+                android:gravity="center_horizontal"
+                android:textSize="0dp"
+                android:textColor="#E64A19"
+                android:layout_centerInParent="true"
+                android:background="@drawable/border5"/>
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_below="@+id/hintWord"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="35dp"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/checkbox"
+            android:layout_marginLeft="50dp"
+            android:background="@drawable/check5"
+            android:visibility="invisible">
+
+            <ImageView
+                android:layout_height="60dp"
+                android:layout_width="60dp"
+                android:background="@drawable/check"
+                android:scaleType="centerCrop"
+                android:gravity="center"
+                android:layout_centerInParent="true"
+                style="?android:attr/borderlessButtonStyle"
+
+                />
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="120dp"
+            android:layout_height="50dp"
+            android:gravity="center"
+            android:textSize="30dp"
+            android:id="@+id/textView3"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/hintWord"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="35dp"
+            android:textColor="#727272"
+            android:textStyle="bold"
+            android:background="@drawable/hintbox5"
+            android:visibility="invisible"
+            />
+
+        <RelativeLayout
+            android:layout_width="60dp"
+            android:layout_height="50dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="35dp"
+            android:layout_below="@+id/hintWord"
+            android:id="@+id/hintplusview"
+            android:background="@drawable/check5"
+            android:clickable="true"
+            android:layout_centerHorizontal="true"
+
+            >
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                style="?android:attr/borderlessButtonStyle"
+                android:id="@+id/hintplus"
+                />
+            <ImageView
+                android:layout_height="40dp"
+                android:layout_width="40dp"
+                android:background="@drawable/lightbulb"
+                android:scaleType="centerCrop"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="3dp"
+                />
+            <TextView
+                android:layout_width="120dp"
+                android:layout_height="70dp"
+                android:text="+"
+                android:textSize="30dp"
+                android:gravity="center_vertical"
+                android:layout_alignParentLeft="true"
+                android:textColor="#FFFFFF"
+                android:layout_marginLeft="6dp"
+                />
+
+        </RelativeLayout>
+    </RelativeLayout>
+
+
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/adView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/AnswerButton"
+        ads:adSize="BANNER"
+        ads:adUnitId="@string/beginner"
+        >
+    </com.google.android.gms.ads.AdView>
+    <Button
+        android:layout_width="100dp"
+        android:layout_height="60dp"
+        android:layout_below="@+id/wordbox"
+        android:layout_marginTop="25dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="5dp"
+        android:id="@+id/AnswerButton"
+        android:textColor="#FFFFFF"
+        android:background="@drawable/check5"
+        android:text="확인"
+        android:textSize="25dp"
+        style="?android:attr/borderlessButtonStyle"/>
+
+    <RelativeLayout
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_toRightOf="@id/AnswerButton"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/wordbox"
+        android:layout_marginTop="25dp"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/check5"
+        android:layout_marginLeft="30dp"
+        android:clickable="true"
+        android:id="@+id/forwardLayout"
+        >
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            style="?android:attr/borderlessButtonStyle"
+            android:id="@+id/forward"/>
+        <ImageView
+            android:layout_height="35dp"
+            android:layout_width="35dp"
+            android:background="@drawable/forward"
+            android:scaleType="centerCrop"
+            android:gravity="center"
+            android:layout_centerInParent="true"
+            />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_below="@+id/wordbox"
+        android:layout_marginTop="25dp"
+        android:layout_toLeftOf="@id/AnswerButton"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="5dp"
+        android:layout_marginRight="30dp"
+        android:background="@drawable/check5"
+        android:clickable="true"
+        android:id="@+id/backLayout">
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            style="?android:attr/borderlessButtonStyle"
+            android:id="@+id/back"/>
+        <ImageView
+            android:layout_height="35dp"
+            android:layout_width="35dp"
+            android:background="@drawable/back"
+            android:scaleType="centerCrop"
+            android:gravity="center"
+            android:layout_centerInParent="true"
+            />
+    </RelativeLayout>
+
+</RelativeLayout>

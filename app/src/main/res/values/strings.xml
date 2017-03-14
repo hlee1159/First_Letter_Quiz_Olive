@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Quiz</string>
+    <string name="beginner">ca-app-pub-7941816792723862/1358646235</string>
+    <string name="advanced">ca-app-pub-7941816792723862/2835379435</string>
+    <string name="expert">ca-app-pub-7941816792723862/5788845832</string>
+    <string name="superhuman">ca-app-pub-7941816792723862/5765055834</string>
+    <string name="god">ca-app-pub-7941816792723862/8718522237</string>
+    <string name="title_activity_main7">Main7Activity</string>
+</resources>

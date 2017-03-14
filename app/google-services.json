@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "504288298103",
+    "firebase_url": "https://first-letter-quiz.firebaseio.com",
+    "project_id": "first-letter-quiz",
+    "storage_bucket": "first-letter-quiz.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:504288298103:android:c9cd16b2fbd87297",
+        "android_client_info": {
+          "package_name": "com.hlee1159.android.firstquiz"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "504288298103-anfhsc8boktejtfjutp3814p72omuvfn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBe8Tfq-dY8stAjcH3Yh0d6_NB2v7Wi9AU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

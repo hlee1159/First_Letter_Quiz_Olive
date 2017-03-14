@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.hlee1159.android.firstquiz.MainActivity"
+    android:background="#FFFFFF">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/orange"
+        android:scaleType="centerCrop"
+        android:id="@+id/startPage"
+        />
+
+
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:text="시작 단계"
+        android:textSize="30dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"
+        android:textColor="#FFFFFF"
+        android:id="@+id/level" />
+
+
+    <TextView
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:textAlignment="center"
+        android:text="초성게임"
+        android:textColor="#FFFFFF"
+        android:textSize="40dp"
+        android:id="@+id/AnswerText"
+        android:layout_below="@+id/level"
+        android:layout_marginTop="40dp"
+
+        android:background="@drawable/title" />
+
+
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="ㅊㅅㄱㅇ"
+        android:id="@+id/QuestionTextView"
+        style="@style/HeaderTextStyle"
+        android:layout_below="@id/AnswerText"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="60dp"
+        android:layout_centerHorizontal="true"
+        android:textColor="#FFFFFF"/>
+
+
+    <Button
+        android:onClick="startNewActivity"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        style="?android:attr/borderlessButtonStyle"
+        android:id="@+id/AnswerButton"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+</RelativeLayout>
