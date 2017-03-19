@@ -7,6 +7,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Typeface;
+import android.net.Uri;
 import android.preference.PreferenceManager;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
@@ -51,12 +52,14 @@ public class GroundActivity extends Activity {
     public ArrayList<String> hint1;
     public ArrayList<String> hint2;
     public ArrayList<String> hint3;
+    public ArrayList<String> hint4;
     public HashSet <String> answerList;
     public ArrayList<String> hintplusList;
     public TextView hint1View;
     public TextView hint2View;
     public TextView textBar1;
     public TextView textBar2;
+    public TextView textBar3;
     public TextView answersCorrect;
     public TextView level;
     public TextView level_bar1;
@@ -71,6 +74,7 @@ public class GroundActivity extends Activity {
     public RelativeLayout view;
     public Button hintplus;
     public TextView hint3view;
+    public TextView hint4view;
     public RelativeLayout hintplusview;
     public RelativeLayout answersCorrectLayout;
     public ImageView answersCorrectImage;
@@ -80,7 +84,9 @@ public class GroundActivity extends Activity {
     public String [] hint1_list;
     public String[] hint2_list;
     public String[] hint3_list;
+    public String[] hint4_list;
     public InterstitialAd mInterstitial;
+    public InterstitialAd cInterstitial;
     public RelativeLayout wordbox;
     public ImageView symbol;
     public RelativeLayout hintWord;
@@ -90,6 +96,7 @@ public class GroundActivity extends Activity {
 
     private static Typeface mTypeface = null;
     public static final String DEFAULT="N/A";
+    SharedPreferences sharedpreferences;
 
     @Override
     public void setContentView(int layoutResID) {
@@ -134,9 +141,25 @@ public class GroundActivity extends Activity {
         mInterstitial.loadAd(adrequest);
 
     }
+
+    public void loadCheatInterstitial() {
+        cInterstitial = new InterstitialAd(this);
+        cInterstitial.setAdUnitId("ca-app-pub-7941816792723862/8366941438");
+        AdRequest adrequest = new AdRequest.Builder().addTestDevice("53A5F3593D943AF2D44924D08C75E278").build();
+        // Check the LogCat to get your test device ID
+        cInterstitial.loadAd(adrequest);
+
+    }
+
     public void showInterstitial() {
         if (mInterstitial.isLoaded()) {
             mInterstitial.show();
+        }
+    }
+
+    public void showCheatInterstitial() {
+        if (cInterstitial.isLoaded()) {
+            cInterstitial.show();
         }
     }
 
@@ -144,19 +167,40 @@ public class GroundActivity extends Activity {
     public void additionalHint() {
         AlertDialog.Builder endLevel = new AlertDialog.Builder(this);
         endLevel.setCancelable(true);
-        endLevel.setMessage("추가힌트를 사용하시겠습니까?");
+        endLevel.setMessage("광고를 보시면 정답 찬스를 사용하실 수 있습니다. 사용하시겠습니까?");
+
+
+
+
 
         endLevel.setPositiveButton("사용하겠습니다", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                hintplusview.setVisibility(View.GONE);
-                hint3view.setVisibility(View.VISIBLE);
-                hintplusList.add(0, questions.get(currentQuestion));
-             //   boxName.setVisibility(View.INVISIBLE);
-              //  reward.setVisibility(View.VISIBLE);
+                //if user select "No", just cancel this dialog and continue with app
+                dialog.cancel();
 
+                showCheatInterstitial();
+                cInterstitial.setAdListener(new AdListener() {
+                    @Override
+                    public void onAdClosed() {
+                        hintplusview.setVisibility(View.GONE);
+                        hint3view.setVisibility(View.VISIBLE);
+                        hintplusList.add(0, questions.get(currentQuestion));
+                        loadCheatInterstitial();
+
+                    }
+                });
+                if (!cInterstitial.isLoaded()){
+                    hintplusview.setVisibility(View.GONE);
+                    hint3view.setVisibility(View.VISIBLE);
+                    hintplusList.add(0, questions.get(currentQuestion));
+                    loadCheatInterstitial();
+                }
             }
         });
+
+
+
         endLevel.setNegativeButton("아니오", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
@@ -213,6 +257,7 @@ public class GroundActivity extends Activity {
         hint1View.setText(hint1.get(currentQuestion));
         hint2View.setText(hint2.get(currentQuestion));
         hint3view.setText(hint3.get(currentQuestion));
+        hint4view.setText(hint4.get(currentQuestion));
         answerText.setText("");
         manipulateBox();
 
@@ -304,6 +349,15 @@ public class GroundActivity extends Activity {
         editor.apply();
     }
 
+    //This method stores the value to the shared preferences
+    public void substring(String string) {
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putString(string, string.substring(0, string.indexOf(string)-1));
+        editor.apply();
+    }
+
+
 
     //This method checks the answer and updates the answer list
     public void checkAnswer() {
@@ -326,6 +380,8 @@ public class GroundActivity extends Activity {
             hint2.remove(currentQuestion + 1);
             hint3.add(0, hint3.get(currentQuestion));
             hint3.remove(currentQuestion + 1);
+            hint4.add(0, hint4.get(currentQuestion));
+            hint4.remove(currentQuestion + 1);
 
             //if the answer is correct update the number of questions correct
             if (answerList.size() < 10) {
@@ -336,7 +392,12 @@ public class GroundActivity extends Activity {
             if (answerList.size() >= 10) {
                 answersCorrect.setText("");
                 answersCorrectImage.setVisibility(View.VISIBLE);
-                endOfTheLevel(message1, message2);
+                SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+                String level9=preferences.getString("level9", DEFAULT);
+                if (level9!=DEFAULT){
+                    endOfTheGame(message1, message2);
+                }
+                else{endOfTheLevel(message1, message2);}
                 return;
             }
             //if the user solves the last question first, show the previous question
@@ -358,6 +419,8 @@ public class GroundActivity extends Activity {
         endLevel.setPositiveButton(string2, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
+                //if user select "No", just cancel this dialog and continue with app
+                dialog.cancel();
                 showInterstitial();
                 answerText.setText("");
                 save(stage);
@@ -370,8 +433,6 @@ public class GroundActivity extends Activity {
                 if (!mInterstitial.isLoaded()){
                     startNextLevel();
                 }
-
-
             }
         });
         endLevel.setNegativeButton("이 페이지에 머무르기", new DialogInterface.OnClickListener() {
@@ -396,7 +457,7 @@ public class GroundActivity extends Activity {
     @Override
     public void onBackPressed() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setCancelable(false);
+        builder.setCancelable(true);
         builder.setMessage("게임을 종료하시겠습니까?");
         builder.setPositiveButton("이전 단계로 돌아가기", new DialogInterface.OnClickListener() {
             @Override
@@ -434,7 +495,90 @@ public class GroundActivity extends Activity {
         startActivity(intent1);
     }
 
+    //This method asks the user to write a review
+    public void askForReview() {
+        AlertDialog.Builder ask = new AlertDialog.Builder(this);
+        ask.setCancelable(true);
+        ask.setMessage("지금까지 열심히 게임 해주셔서 정말 감사합니다! " +
+                "\n혹시 간단한 리뷰 부탁드려도 될까요?");
 
+        ask.setPositiveButton("지금 작성하기", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                /* This code assumes you are inside an activity */
+                final Uri uri = Uri.parse("market://details?id=" + getApplicationContext().getPackageName());
+                final Intent rateAppIntent = new Intent(Intent.ACTION_VIEW, uri);
+
+                if (getPackageManager().queryIntentActivities(rateAppIntent, 0).size() > 0)
+                {
+                    startActivity(rateAppIntent);
+                }
+                else
+                {
+                }
+
+
+
+            }
+        });
+        ask.setNegativeButton("나중에 작성하기", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                //if user select "No", just cancel this dialog and continue with app
+                dialog.cancel();
+            }
+        });
+        AlertDialog alert = ask.create();
+        alert.show();
+    }
+
+    //This method asks the user what to do when the level is ended
+    public void endOfTheGame(String string1, String string2) {
+        AlertDialog.Builder endGame = new AlertDialog.Builder(this);
+        endGame.setCancelable(false);
+        endGame.setMessage(string1);
+
+        endGame.setPositiveButton("리뷰 작성하기", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                /* This code assumes you are inside an activity */
+                final Uri uri = Uri.parse("market://details?id=" + getApplicationContext().getPackageName());
+                final Intent rateAppIntent = new Intent(Intent.ACTION_VIEW, uri);
+
+                if (getPackageManager().queryIntentActivities(rateAppIntent, 0).size() > 0)
+                {
+                    startActivity(rateAppIntent);
+                }
+                else
+                {
+                }
+
+
+
+            }
+        });
+        endGame.setNegativeButton("나가기", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                //if user select "No", just cancel this dialog and continue with app
+                dialog.cancel();
+                showInterstitial();
+                answerText.setText("");
+                save(stage);
+                mInterstitial.setAdListener(new AdListener() {
+                    @Override
+                    public void onAdClosed() {
+                        startNextLevel();
+                    }
+                });
+                if (!mInterstitial.isLoaded()){
+                    startNextLevel();
+                }
+            }
+        });
+        AlertDialog alert = endGame.create();
+        alert.show();
+    }
 
 
 

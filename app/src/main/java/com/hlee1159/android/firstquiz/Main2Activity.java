@@ -102,11 +102,13 @@ public class Main2Activity extends GroundActivity {
         hint1_list = new String[]{"뜻있다", "상념","승부", "재미", "상처", "조금씩", "먹을거리", "겨우", "도움말", "날림"};
         hint2_list = new String[]{"만족감", "쓸데없이","다투다", "어린애", "흔적", "사이사이", "심심풀이", "통과", "멘토", "서둘러"};
         hint3_list = new String[]{"삶의~", "생각", "태권도", "말~", "얼룩", "점차", "간식", "철봉", "충고", "시험"};
+        hint4_list = new String[]{"삶의~", "생각", "태권도", "말~", "얼룩", "점차", "간식", "철봉", "충고", "시험"};
         questions = new ArrayList<String>();
         answers = new ArrayList<String>();
         hint1 = new ArrayList<String>();
         hint2 = new ArrayList<String>();
         hint3 = new ArrayList<String>();
+        hint4 = new ArrayList<String>();
         answerList = new HashSet<String>();
         hintplusList = new ArrayList<String>();
         message1 = new String ("축하합니다!"+"\n유망주 단계를 통과하셨습니다.");
@@ -120,6 +122,7 @@ public class Main2Activity extends GroundActivity {
             hint1.add(hint1_list[index]);
             hint2.add(hint2_list[index]);
             hint3.add(hint3_list[index]);
+            hint4.add(hint4_list[index]);
         }
 
         //set current question to be 0 "당신은 천재입니다!" + "\n다음엔 더 어렵고 더 재밌는 문제로 찾아뵙겠습니다."
@@ -245,6 +248,9 @@ public class Main2Activity extends GroundActivity {
 
         hint3view = (TextView) findViewById(R.id.textView3);
         hint3view.setBackgroundResource(R.drawable.hintbox2);
+        hint4view = (TextView) findViewById(R.id.textView4);
+        textBar3 = (TextView) findViewById(R.id.textbar3);
+        textBar3.setBackgroundResource(R.drawable.border2);
 
         hintplusview = (RelativeLayout) findViewById(R.id.hintplusview);
         hintplusview.setBackgroundResource(R.drawable.check2);

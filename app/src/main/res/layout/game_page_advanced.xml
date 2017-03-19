@@ -165,6 +165,38 @@
                 android:layout_centerInParent="true"
                 android:background="@drawable/border5"/>
         </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/hintWord"
+            android:layout_marginBottom="0dp"
+            android:layout_marginTop="0dp"
+            >
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:gravity="center"
+                android:textSize="0dp"
+                android:id="@+id/textView4"
+
+                android:layout_centerInParent="true"
+                android:textColor="#727272"
+
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textView4"
+                android:id="@+id/textbar3"
+                android:text=""
+                android:gravity="center_horizontal"
+                android:textSize="0dp"
+                android:textColor="#E64A19"
+                android:layout_centerInParent="true"
+                android:background="@drawable/border5"/>
+        </RelativeLayout>
 
 
         <RelativeLayout
@@ -192,7 +224,7 @@
         </RelativeLayout>
 
         <TextView
-            android:layout_width="120dp"
+            android:layout_width="150dp"
             android:layout_height="50dp"
             android:gravity="center"
             android:textSize="30dp"
@@ -231,19 +263,10 @@
                 android:background="@drawable/lightbulb"
                 android:scaleType="centerCrop"
                 android:layout_centerVertical="true"
-                android:layout_alignParentRight="true"
-                android:layout_marginRight="3dp"
+                android:layout_centerHorizontal="true"
+
                 />
-            <TextView
-                android:layout_width="120dp"
-                android:layout_height="70dp"
-                android:text="+"
-                android:textSize="30dp"
-                android:gravity="center_vertical"
-                android:layout_alignParentLeft="true"
-                android:textColor="#FFFFFF"
-                android:layout_marginLeft="6dp"
-                />
+
 
         </RelativeLayout>
     </RelativeLayout>

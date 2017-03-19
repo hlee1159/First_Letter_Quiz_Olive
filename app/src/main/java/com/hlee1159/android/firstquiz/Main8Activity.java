@@ -27,13 +27,14 @@ public class Main8Activity extends GroundActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.game_page_advanced);
+        setContentView(R.layout.game_page_intermediate);
         setStage();
-        Toast.makeText(this, "초인 등급으로 승급하셨습니다!", Toast.LENGTH_LONG).show();
+        Toast.makeText(this, "천재 등급으로 승급하셨습니다!", Toast.LENGTH_LONG).show();
         init();
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
         loadBanner();
         loadInterstitial();
+        loadCheatInterstitial();
         enableSkip();
     }
 
@@ -62,20 +63,22 @@ public class Main8Activity extends GroundActivity {
     }
 
     public void init() {
-        questions_list = new String[]{"ㅂㅇㅇ", "ㅂㄱ", "ㅅㄹㅈㄱ", "ㅅㅅ", "ㄴㅅ", "ㅈㅂ", "ㅈㅇㅈ", "ㅇㅈ", "ㅇㅁㄹ", "ㄱㅍ"};
-        answers_list = new String[]{"비웃음", "불과", "술래잡기", "신세", "내숭", "제법", "저울질", "오죽", "아무렴", "간판"};
-        hint1_list = new String[]{"조롱", "겨우", "놀이", "처지", "아닌 척", "꽤","비교", "얼마나", "당연히", "대표"};
-        hint2_list = new String[]{"", "", "", "", "","", "", "", "", ""};
-        hint3_list = new String[]{"깔보다", "뿐이다", "동네", "지다", "~떨다", "의외로", "떠보다", "~하면", "그렇지", "얼굴"};
+        questions_list = new String[]{"ㅂㅇㅇ", "ㅂㄱ", "ㅁㅇㄷ", "ㅅㅅ", "ㄴㅅ", "ㅈㅂ", "ㅈㅇㅈ", "ㅇㅈ", "ㅇㅁㄹ", "ㄱㅍ"};
+        answers_list = new String[]{"비웃음", "불과", "무용담", "신세", "내숭", "제법", "저울질", "오죽", "아무렴", "간판"};
+        hint1_list = new String[]{"조롱", "겨우", "자랑", "처지", "아닌 척", "꽤","비교", "얼마나", "당연히", "대표"};
+        hint2_list = new String[]{"깔보다", "뿐이다", "싸움", "지다", "~떨다", "의외로", "떠보다", "~하면", "그렇지", "얼굴"};
+        hint3_list = new String[]{"비웃음", "불과", "무용담", "신세", "내숭", "제법", "저울질", "오죽", "아무렴", "간판"};
+        hint4_list = new String[]{"", "", "", "", "", "", "", "", "", ""};
         questions = new ArrayList<String>();
         answers = new ArrayList<String>();
         hint1 = new ArrayList<String>();
         hint2 = new ArrayList<String>();
         hint3 = new ArrayList<String>();
+        hint4 = new ArrayList<String>();
         answerList = new HashSet<String>();
         hintplusList = new ArrayList<String>();
-        message1 = new String ("축하합니다!"+"\n초인 단계를 통과하셨습니다.");
-        message2 = new String ("신 단계에 도전!");
+        message1 = new String ("축하합니다!"+"\n천재 단계를 통과하셨습니다.");
+        message2 = new String ("초천재 단계에 도전!");
         stage=new String ("level8");
 
         //make array lists of all the answer list, hint plust list, questions and all the hints
@@ -85,6 +88,7 @@ public class Main8Activity extends GroundActivity {
             hint1.add(hint1_list[index]);
             hint2.add(hint2_list[index]);
             hint3.add(hint3_list[index]);
+            hint4.add(hint4_list[index]);
         }
 
         //set current question to be 0
@@ -183,7 +187,7 @@ public class Main8Activity extends GroundActivity {
 
         level=(TextView) findViewById(R.id.level);
         level.setTextColor(getResources().getColor(R.color.color8));
-        level.setText("초인 단계");
+        level.setText("천재 단계");
 
         answersCorrectLayout= (RelativeLayout) findViewById(R.id.answersCorrectLayout);
         answersCorrectLayout.setBackgroundResource(R.drawable.check8);
@@ -209,6 +213,9 @@ public class Main8Activity extends GroundActivity {
 
         hint3view = (TextView) findViewById(R.id.textView3);
         hint3view.setBackgroundResource(R.drawable.hintbox8);
+        hint4view = (TextView) findViewById(R.id.textView4);
+        textBar3 = (TextView) findViewById(R.id.textbar3);
+        textBar3.setBackgroundResource(R.drawable.border1);
 
         hintplusview = (RelativeLayout) findViewById(R.id.hintplusview);
         hintplusview.setBackgroundResource(R.drawable.check8);

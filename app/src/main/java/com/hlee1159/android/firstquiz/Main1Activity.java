@@ -102,16 +102,19 @@ public class Main1Activity extends GroundActivity {
         hint1_list = new String[]{"바람", "얼굴", "절호", "유행어", "사기", "남음", "탐정", "뒤죽박죽", "낌새", "자질구레한"};
         hint2_list = new String[]{"꿈", "운세", "엿보다", "농담", "꾀", "느긋함", "첫머리", "어수선함", "살피다", "참견"};
         hint3_list = new String[]{"~고문", "인상", "찬스", "코미디", "술수", "~만만", "단서", "~진창", "~채다", "꾸중"};
+        hint4_list = new String[]{"~고문", "인상", "찬스", "코미디", "술수", "~만만", "단서", "~진창", "~채다", "꾸중"};
         questions = new ArrayList<String>();
         answers = new ArrayList<String>();
         hint1 = new ArrayList<String>();
         hint2 = new ArrayList<String>();
         hint3 = new ArrayList<String>();
+        hint4 = new ArrayList<String>();
         answerList = new HashSet<String>();
         hintplusList = new ArrayList<String>();
         message1 = new String ("축하합니다!"+"\n초보자 단계를 통과하셨습니다.");
         message2 = new String ("유망주 단계에 도전!");
         stage=new String ("level1");
+
 
         //make array lists of all the answer list, hint plust list, questions and all the hints
         for (int index = 0; index < 10; index++) {
@@ -120,6 +123,7 @@ public class Main1Activity extends GroundActivity {
             hint1.add(hint1_list[index]);
             hint2.add(hint2_list[index]);
             hint3.add(hint3_list[index]);
+            hint4.add(hint4_list[index]);
         }
 
         //set current question to be 0 "당신은 천재입니다!" + "\n다음엔 더 어렵고 더 재밌는 문제로 찾아뵙겠습니다."
@@ -245,6 +249,9 @@ public class Main1Activity extends GroundActivity {
 
         hint3view = (TextView) findViewById(R.id.textView3);
         hint3view.setBackgroundResource(R.drawable.hintbox1);
+        hint4view = (TextView) findViewById(R.id.textView4);
+        textBar3 = (TextView) findViewById(R.id.textbar3);
+        textBar3.setBackgroundResource(R.drawable.border1);
 
         hintplusview = (RelativeLayout) findViewById(R.id.hintplusview);
         hintplusview.setBackgroundResource(R.drawable.check1);
@@ -273,6 +280,7 @@ public class Main1Activity extends GroundActivity {
     //This method starts the next level
     @Override
     public void startNextLevel() {
+
         Intent intent2 = new Intent(this, Main2Activity.class);
         startActivity(intent2);
     }
@@ -304,5 +312,6 @@ public class Main1Activity extends GroundActivity {
 
 
     }
+
 
 }

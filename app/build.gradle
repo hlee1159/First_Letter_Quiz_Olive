@@ -13,8 +13,8 @@ android {
         applicationId "com.hlee1159.android.firstquiz"
         minSdkVersion 15
         targetSdkVersion 23
-        versionCode 12
-        versionName "9"
+        versionCode 13
+        versionName "10"
     }
     buildTypes {
         release {

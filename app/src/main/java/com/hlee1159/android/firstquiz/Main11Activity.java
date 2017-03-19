@@ -67,11 +67,13 @@ public class Main11Activity extends GroundActivity {
         hint1_list = new String[]{"식사시간", "방망이", "기억", "자랑", "야만", "쓸데없이","암기", "물리다", "12살", "최근"};
         hint2_list = new String[]{"", "", "", "", "","", "", "", "", ""};
         hint3_list = new String[]{"배고픔", "귀신", "업적", "싸움", "이민족", "참견", "공책", "권태", "같다", "내일"};
+        hint4_list = new String[]{"", "", "", "", "", "", "", "", "", ""};
         questions = new ArrayList<String>();
         answers = new ArrayList<String>();
         hint1 = new ArrayList<String>();
         hint2 = new ArrayList<String>();
         hint3 = new ArrayList<String>();
+        hint4 = new ArrayList<String>();
         answerList = new HashSet<String>();
         hintplusList = new ArrayList<String>();
         message1 = new String ("당신은 천재입니다!" + "\n다음엔 더 어렵고 더 재밌는 문제로 찾아뵙겠습니다.");
@@ -85,6 +87,7 @@ public class Main11Activity extends GroundActivity {
             hint1.add(hint1_list[index]);
             hint2.add(hint2_list[index]);
             hint3.add(hint3_list[index]);
+            hint4.add(hint4_list[index]);
         }
 
         //set current question to be 0
@@ -209,6 +212,9 @@ public class Main11Activity extends GroundActivity {
 
         hint3view = (TextView) findViewById(R.id.textView3);
         hint3view.setBackgroundResource(R.drawable.hintbox7);
+        hint4view = (TextView) findViewById(R.id.textView4);
+        textBar3 = (TextView) findViewById(R.id.textbar3);
+        textBar3.setBackgroundResource(R.drawable.border1);
 
         hintplusview = (RelativeLayout) findViewById(R.id.hintplusview);
         hintplusview.setBackgroundResource(R.drawable.check7);

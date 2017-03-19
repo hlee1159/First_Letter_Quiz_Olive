@@ -29,11 +29,13 @@ public class Main9Activity extends GroundActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.game_page_advanced);
         setStage();
-        Toast.makeText(this, "신 등급으로 승급하셨습니다!", Toast.LENGTH_LONG).show();
+        Toast.makeText(this, "초천재 등급으로 승급하셨습니다!", Toast.LENGTH_LONG).show();
         init();
+        askForReview();
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
         loadBanner();
         loadInterstitial();
+        loadCheatInterstitial();
         enableSkip();
     }
 
@@ -62,20 +64,22 @@ public class Main9Activity extends GroundActivity {
     }
 
     public void init() {
-        questions_list = new String[]{"ㅂ□□ㄱ", "ㄷ□ㅂ", "ㄱㄴㅂ", "ㅁㅇㄷ", "□□ㅋ", "ㅇㅈㄹ", "ㄷㅇㅈ", "ㅈㅂ", "ㄸ□ㄱ", "□ㅈ□ㄴ"};
-        answers_list = new String[]{"배꼽시계", "도깨비", "기념비", "무용담", "오랑캐", "오지랖", "단어장", "족보", "띠동갑", "어제오늘"};
-        hint1_list = new String[]{"식사시간", "방망이", "기억", "자랑", "야만", "쓸데없이","암기", "따지다", "12살", "최근"};
+        questions_list = new String[]{"ㄱㅇㅂㅇㅂ", "ㅇㅅㅈㄱ", "ㅊㄱㅍ", "ㅂㅅㅂㅇ", "ㅅㅂㄹ", "ㅇㄹㅋ", "ㅁㅁㄱㅈ", "ㅇㅈㄹ", "ㅈㅈㄱ", "ㅂㅈㄱ"};
+        answers_list = new String[]{"가위바위보", "이실직고", "책갈피", "반신반의", "심부름", "오랑캐", "무미건조", "오지랖", "족집게", "보조개"};
+        hint1_list = new String[]{"승부", "사실", "사이사이", "의심", "일", "야만","메마른", "쓸데없이", "과외", "볼"};
         hint2_list = new String[]{"", "", "", "", "","", "", "", "", ""};
-        hint3_list = new String[]{"배고픔", "귀신", "업적", "싸움", "이민족", "참견", "공책", "뿌리", "같다", "내일"};
+        hint3_list = new String[]{"가위바위보", "이실직고", "책갈피", "반신반의", "심부름", "오랑캐", "무미건조", "오지랖", "족집게", "보조개"};
+        hint4_list = new String[]{"", "", "", "", "", "", "", "", "", ""};
         questions = new ArrayList<String>();
         answers = new ArrayList<String>();
         hint1 = new ArrayList<String>();
         hint2 = new ArrayList<String>();
         hint3 = new ArrayList<String>();
+        hint4 = new ArrayList<String>();
         answerList = new HashSet<String>();
         hintplusList = new ArrayList<String>();
-        message1 = new String ("당신은 천재입니다!" + "\n다음엔 더 어렵고 더 재밌는 문제로 찾아뵙겠습니다.");
-        message2 = new String ("나가기!");
+        message1 = new String ("축하합니다!"+"\n초천재 단계를 통과하셨습니다.");
+        message2 = new String ("초인 단계에 도전!");
         stage=new String ("level9");
 
         //make array lists of all the answer list, hint plust list, questions and all the hints
@@ -85,6 +89,7 @@ public class Main9Activity extends GroundActivity {
             hint1.add(hint1_list[index]);
             hint2.add(hint2_list[index]);
             hint3.add(hint3_list[index]);
+            hint4.add(hint4_list[index]);
         }
 
         //set current question to be 0
@@ -183,7 +188,7 @@ public class Main9Activity extends GroundActivity {
 
         level=(TextView) findViewById(R.id.level);
         level.setTextColor(getResources().getColor(R.color.color9));
-        level.setText("신 단계");
+        level.setText("초천재 단계");
 
         answersCorrectLayout= (RelativeLayout) findViewById(R.id.answersCorrectLayout);
         answersCorrectLayout.setBackgroundResource(R.drawable.check9);
@@ -209,6 +214,9 @@ public class Main9Activity extends GroundActivity {
 
         hint3view = (TextView) findViewById(R.id.textView3);
         hint3view.setBackgroundResource(R.drawable.hintbox9);
+        hint4view = (TextView) findViewById(R.id.textView4);
+        textBar3 = (TextView) findViewById(R.id.textbar3);
+        textBar3.setBackgroundResource(R.drawable.border1);
 
         hintplusview = (RelativeLayout) findViewById(R.id.hintplusview);
         hintplusview.setBackgroundResource(R.drawable.check9);
@@ -232,15 +240,14 @@ public class Main9Activity extends GroundActivity {
         view = (RelativeLayout) findViewById(R.id.view);
         forward = (Button) findViewById(R.id.forward);
         hintplus = (Button) findViewById(R.id.hintplus);
+
     }
 
     //This method starts the next level
     @Override
     public void startNextLevel() {
-        Intent intent = new Intent(Intent.ACTION_MAIN);
-        intent.addCategory(Intent.CATEGORY_HOME);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        startActivity(intent);
+        Intent intent2 = new Intent(this, Main10Activity.class);
+        startActivity(intent2);
     }
 
     //This method starts the previous level

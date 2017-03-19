@@ -47,13 +47,15 @@ public class Main5Activity extends GroundActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.game_page_advanced);
+        setContentView(R.layout.game_page_intermediate);
         setStage();
         Toast.makeText(this, "영웅 등급으로 승급하셨습니다!", Toast.LENGTH_LONG).show();
         init();
+        askForReview();
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
         loadBanner();
         loadInterstitial();
+        loadCheatInterstitial();
         enableSkip();
     }
 
@@ -82,16 +84,18 @@ public class Main5Activity extends GroundActivity {
     }
 
     public void init() {
-        questions_list = new String[]{"ㄴㅍㅂㅈ", "ㄷㄷㅇ", "ㅁㄹㅅ", "ㄱㅇㅁ", "ㅁㅍㅅ", "ㅁㄱㅇ", "ㅅㅂㄹ", "ㅂㅊㅂ", "ㅎㅈㅅ", "ㅊㄱㅍ"};
-        answers_list = new String[]{"나팔바지", "됨됨이", "모르쇠", "걸음마", "말풍선", "물갈이", "신바람", "불치병", "현주소", "책갈피"};
-        hint1_list = new String[]{"넓어지다", "성품", "청문회", "떼다", "만화", "변화", "덩실덩실", "환자", "실태","사이사이"};
-        hint2_list = new String[]{"", "", "", "", "","", "", "", "", ""};
-        hint3_list = new String[]{"패션", "사람~", "시치미", "아기", "대사", "구조조정", "~나다", "고질", "현실", "책"};
+        questions_list = new String[]{"ㄴㅍㅂㅈ", "ㄷㄷㅇ", "ㅁㄹㅅ", "ㄱㅇㅁ", "ㅁㅍㅅ", "ㅁㄱㅇ", "ㅅㅂㄹ", "ㅂㅊㅂ", "ㅎㅈㅅ", "ㅅㅌㅂㄹ"};
+        answers_list = new String[]{"나팔바지", "됨됨이", "모르쇠", "걸음마", "말풍선", "물갈이", "신바람", "불치병", "현주소", "사탕발림"};
+        hint1_list = new String[]{"넓어지다", "성품", "청문회", "떼다", "만화", "변화", "덩실덩실", "환자", "실태","달콤한"};
+        hint2_list = new String[]{"패션", "사람~", "시치미", "아기", "대사", "구조조정", "~나다", "고질", "현실", "아부"};
+        hint3_list = new String[]{"나팔바지", "됨됨이", "모르쇠", "걸음마", "말풍선", "물갈이", "신바람", "불치병", "현주소", "사탕발림"};
+        hint4_list = new String[]{"", "", "", "", "", "", "", "", "", ""};
         questions = new ArrayList<String>();
         answers = new ArrayList<String>();
         hint1 = new ArrayList<String>();
         hint2 = new ArrayList<String>();
         hint3 = new ArrayList<String>();
+        hint4 = new ArrayList<String>();
         answerList = new HashSet<String>();
         hintplusList = new ArrayList<String>();
         message1 = new String ("축하합니다!"+"\n영웅 단계를 통과하셨습니다.");
@@ -105,6 +109,7 @@ public class Main5Activity extends GroundActivity {
             hint1.add(hint1_list[index]);
             hint2.add(hint2_list[index]);
             hint3.add(hint3_list[index]);
+            hint4.add(hint4_list[index]);
         }
 
         //set current question to be 0
@@ -222,13 +227,16 @@ public class Main5Activity extends GroundActivity {
 
         hint2View = (TextView) findViewById(R.id.textView2);
         textBar2 = (TextView) findViewById(R.id.textbar2);
-        textBar2.setBackgroundResource(R.drawable.border4);
+        textBar2.setBackgroundResource(R.drawable.border5);
 
         box = (RelativeLayout) findViewById(R.id.checkbox);
         box.setBackgroundResource(R.drawable.check5);
 
         hint3view = (TextView) findViewById(R.id.textView3);
         hint3view.setBackgroundResource(R.drawable.hintbox5);
+        hint4view = (TextView) findViewById(R.id.textView4);
+        textBar3 = (TextView) findViewById(R.id.textbar3);
+        textBar3.setBackgroundResource(R.drawable.border1);
 
         hintplusview = (RelativeLayout) findViewById(R.id.hintplusview);
         hintplusview.setBackgroundResource(R.drawable.check5);

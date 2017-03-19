@@ -83,16 +83,18 @@ public class Main4Activity extends GroundActivity {
     }
 
     public void init() {
-        questions_list = new String[]{"ㄱㅃㄱ", "ㅅㅍㄱ", "ㄱㄴ", "ㅁㅆ", "ㄱㅂ", "ㅈㅁ□□", "ㅈㅅ", "ㅁ□ㄱ", "ㅈ□ㅅ", "ㅂㄹ"};
-        answers_list = new String[]{"곱빼기", "상품권", "그늘", "말썽", "고비", "주먹구구", "질서", "맛보기", "조바심", "버릇"};
-        hint1_list = new String[]{"한 그릇", "교환", "어둠", "골칫거리", "고개", "대충","정리", "시험 삼아", "애", "반복"};
-        hint2_list = new String[]{"두 그릇", "선물", "휴식", "물의", "위기","어림짐작", "차례", "조금", "안달복달", "굳다"};
-        hint3_list = new String[]{"짜장면", "백화점", "나무", "~꾸러기", "넘기다", "~식", "~의식", "시식", "조마조마", "습관"};
+        questions_list = new String[]{"ㄱㅃㄱ", "ㅅㅍㄱ", "ㄱㄴ", "ㅁㅆ", "ㄱㅂ", "ㄱㅌㅈㄹ", "ㅂㅇㅎㄹ", "ㅁㅂㄱ", "ㅈㅂㅅ", "ㅂㄹ"};
+        answers_list = new String[]{"곱빼기", "상품권", "그늘", "말썽", "고비", "교통정리", "바야흐로", "맛보기", "조바심", "버릇"};
+        hint1_list = new String[]{"한 그릇", "교환", "어둠", "골칫거리", "고개", "분쟁 해결","지금", "시험 삼아", "애", "반복"};
+        hint2_list = new String[]{"두 그릇", "선물", "휴식", "물의", "위기","정리", "한창", "조금", "안달복달", "굳다"};
+        hint3_list = new String[]{"짜장면", "백화점", "나무", "~꾸러기", "넘기다", "경찰", "때는 ~", "시식", "조마조마", "습관"};
+        hint4_list = new String[]{"짜장면", "백화점", "나무", "~꾸러기", "넘기다", "경찰", "때는 ~", "시식", "조마조마", "습관"};
         questions = new ArrayList<String>();
         answers = new ArrayList<String>();
         hint1 = new ArrayList<String>();
         hint2 = new ArrayList<String>();
         hint3 = new ArrayList<String>();
+        hint4 = new ArrayList<String>();
         answerList = new HashSet<String>();
         hintplusList = new ArrayList<String>();
         message1 = new String ("축하합니다!"+"\n최우수 단계를 통과하셨습니다.");
@@ -106,6 +108,7 @@ public class Main4Activity extends GroundActivity {
             hint1.add(hint1_list[index]);
             hint2.add(hint2_list[index]);
             hint3.add(hint3_list[index]);
+            hint4.add(hint4_list[index]);
         }
 
         //set current question to be 0
@@ -230,6 +233,9 @@ public class Main4Activity extends GroundActivity {
 
         hint3view = (TextView) findViewById(R.id.textView3);
         hint3view.setBackgroundResource(R.drawable.hintbox4);
+        hint4view = (TextView) findViewById(R.id.textView4);
+        textBar3 = (TextView) findViewById(R.id.textbar3);
+        textBar3.setBackgroundResource(R.drawable.border4);
 
         hintplusview = (RelativeLayout) findViewById(R.id.hintplusview);
         hintplusview.setBackgroundResource(R.drawable.check4);
