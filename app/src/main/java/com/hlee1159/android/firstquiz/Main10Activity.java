@@ -63,11 +63,11 @@ public class Main10Activity extends GroundActivity {
     }
 
     public void init() {
-        questions_list = new String[]{"ㅂ□□ㄱ", "ㅎㅅㅂ", "ㄱㄴㅂ", "ㅇㅂㄹ", "ㅇㅅㅂㅂㅂ", "ㅁㅅㅅ", "ㄷㅇㅈ", "ㅈㅁ", "ㄸㄷㄱ", "ㅇㅈㅇㄴ"};
-        answers_list = new String[]{"배꼽시계", "화수분", "기념비", "일부러", "오십보백보", "맙소사", "단어장", "지문", "띠동갑", "어제오늘"};
-        hint1_list = new String[]{"식사시간", "보물단지", "기억", "굳이", "차이 없는", "탄식","암기", "손끝", "12살", "최근"};
+        questions_list = new String[]{"ㅇㄹㅁㅈ", "ㅎㅅㅂ", "ㄱㄴㅂ", "ㅇㅂㄹ", "ㅇㅈ", "ㄷㄱㄴㄱ", "ㅁㄷㄲ", "ㅈㅎㅇㅂ", "ㅎㅈㄱ", "ㅌㅇ"};
+        answers_list = new String[]{"오리무중", "화수분", "기념비", "일부러", "응징", "동갑내기", "말대꾸", "전화위복", "환절기", "터울"};
+        hint1_list = new String[]{"미궁", "보물단지", "기억", "굳이", "보복", "친구","꼬박꼬박", "반전", "감기", "나이 차이"};
         hint2_list = new String[]{"", "", "", "", "","", "", "", "", ""};
-        hint3_list = new String[]{"배꼽시계", "화수분", "기념비", "일부러", "오십보백보", "맙소사", "단어장", "지문", "띠동갑", "어제오늘"};
+        hint3_list = new String[]{"오리무중", "화수분", "기념비", "일부러", "응징", "동갑내기", "말대꾸", "전화위복", "환절기", "터울"};
         hint4_list = new String[]{"", "", "", "", "", "", "", "", "", ""};
         questions = new ArrayList<String>();
         answers = new ArrayList<String>();
@@ -77,9 +77,10 @@ public class Main10Activity extends GroundActivity {
         hint4 = new ArrayList<String>();
         answerList = new HashSet<String>();
         hintplusList = new ArrayList<String>();
-        message1 = new String ("당신은 신입니다!" + "\n다음엔 더 어렵고 더 재밌는 문제로 찾아뵙겠습니다.");
-        message2 = new String ("나가기!");
+        message1 = new String ("축하합니다!"+"\n초인 단계를 통과하셨습니다.");
+        message2 = new String ("시간여행자 단계에 도전!");
         stage=new String ("level10");
+
 
         //make array lists of all the answer list, hint plust list, questions and all the hints
         for (int index = 0; index < 10; index++) {
@@ -245,12 +246,10 @@ public class Main10Activity extends GroundActivity {
     //This method starts the next level
     @Override
     public void startNextLevel() {
-        Intent intent = new Intent(Intent.ACTION_MAIN);
-        intent.addCategory(Intent.CATEGORY_HOME);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        startActivity(intent);
-        askForReview();
+        Intent intent2 = new Intent(this, Main11Activity.class);
+        startActivity(intent2);
     }
+
 
     //This method starts the previous level
     @Override

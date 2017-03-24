@@ -63,11 +63,11 @@ public class Main8Activity extends GroundActivity {
     }
 
     public void init() {
-        questions_list = new String[]{"ㅂㅇㅇ", "ㅂㄱ", "ㅁㅇㄷ", "ㅅㅅ", "ㄴㅅ", "ㅈㅂ", "ㅈㅇㅈ", "ㅇㅈ", "ㅇㅁㄹ", "ㄱㅍ"};
-        answers_list = new String[]{"비웃음", "불과", "무용담", "신세", "내숭", "제법", "저울질", "오죽", "아무렴", "간판"};
-        hint1_list = new String[]{"조롱", "겨우", "자랑", "처지", "아닌 척", "꽤","비교", "얼마나", "당연히", "대표"};
-        hint2_list = new String[]{"깔보다", "뿐이다", "싸움", "지다", "~떨다", "의외로", "떠보다", "~하면", "그렇지", "얼굴"};
-        hint3_list = new String[]{"비웃음", "불과", "무용담", "신세", "내숭", "제법", "저울질", "오죽", "아무렴", "간판"};
+        questions_list = new String[]{"ㅂㅇㅇ", "ㅊㅍ", "ㅁㅇㄷ", "ㅁㅈㄱ", "ㄴㅅ", "ㅈㅂ", "ㅈㅇㅈ", "ㅂㅅㅌ", "ㄱㅇㅇ", "ㄱㅍ"};
+        answers_list = new String[]{"비웃음", "추파", "무용담", "맞장구", "내숭", "제법", "저울질", "북새통", "그을음", "간판"};
+        hint1_list = new String[]{"조롱", "윙크", "자랑", "호응", "아닌 척", "꽤","비교", "시장", "연기", "대표"};
+        hint2_list = new String[]{"깔보다", "던지다", "싸움", "부추기다", "~떨다", "의외로", "떠보다", "야단법석", "까만", "얼굴"};
+        hint3_list = new String[]{"비웃음", "추파", "무용담", "맞장구", "내숭", "제법", "저울질", "북새통", "그을음", "간판"};
         hint4_list = new String[]{"", "", "", "", "", "", "", "", "", ""};
         questions = new ArrayList<String>();
         answers = new ArrayList<String>();

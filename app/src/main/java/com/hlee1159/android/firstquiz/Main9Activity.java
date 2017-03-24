@@ -64,11 +64,11 @@ public class Main9Activity extends GroundActivity {
     }
 
     public void init() {
-        questions_list = new String[]{"ㄱㅇㅂㅇㅂ", "ㅇㅅㅈㄱ", "ㅊㄱㅍ", "ㅂㅅㅂㅇ", "ㅅㅂㄹ", "ㅇㄹㅋ", "ㅁㅁㄱㅈ", "ㅇㅈㄹ", "ㅈㅈㄱ", "ㅂㅈㄱ"};
-        answers_list = new String[]{"가위바위보", "이실직고", "책갈피", "반신반의", "심부름", "오랑캐", "무미건조", "오지랖", "족집게", "보조개"};
-        hint1_list = new String[]{"승부", "사실", "사이사이", "의심", "일", "야만","메마른", "쓸데없이", "과외", "볼"};
+        questions_list = new String[]{"ㄱㅇㅂㅇㅂ", "ㅇㅅㅈㄱ", "ㅊㄱㅍ", "ㅂㅅㅂㅇ", "ㅅㅂㄹ", "ㅇㄹㅋ", "ㄴㄷㅇㄱ", "ㅇㅈㄹ", "ㅈㅈㄱ", "ㅂㅈㄱ"};
+        answers_list = new String[]{"가위바위보", "이실직고", "책갈피", "반신반의", "심부름", "오랑캐", "늑대인간", "오지랖", "족집게", "보조개"};
+        hint1_list = new String[]{"승부", "사실대로", "사이사이", "의심", "일", "야만","보름달", "쓸데없이", "과외", "볼"};
         hint2_list = new String[]{"", "", "", "", "","", "", "", "", ""};
-        hint3_list = new String[]{"가위바위보", "이실직고", "책갈피", "반신반의", "심부름", "오랑캐", "무미건조", "오지랖", "족집게", "보조개"};
+        hint3_list = new String[]{"가위바위보", "이실직고", "책갈피", "반신반의", "심부름", "오랑캐", "늑대인간", "오지랖", "족집게", "보조개"};
         hint4_list = new String[]{"", "", "", "", "", "", "", "", "", ""};
         questions = new ArrayList<String>();
         answers = new ArrayList<String>();

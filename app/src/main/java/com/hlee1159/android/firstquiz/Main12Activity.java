@@ -34,6 +34,7 @@ public class Main12Activity extends GroundActivity {
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
         loadBanner();
         loadInterstitial();
+        loadCheatInterstitial();
         enableSkip();
     }
 
@@ -62,11 +63,11 @@ public class Main12Activity extends GroundActivity {
     }
 
     public void init() {
-        questions_list = new String[]{"ㅂ□□ㄱ", "ㄷ□ㅂ", "ㄱㄴㅂ", "ㅁㅇㄷ", "□□ㅋ", "ㅇㅈㄹ", "ㄷㅇㅈ", "ㅈㅂ", "ㄸ□ㄱ", "□ㅈ□ㄴ"};
-        answers_list = new String[]{"배꼽시계", "도깨비", "기념비", "무용담", "오랑캐", "오지랖", "단어장", "족보", "띠동갑", "어제오늘"};
-        hint1_list = new String[]{"식사시간", "방망이", "기억", "자랑", "야만", "쓸데없이","암기", "따지다", "12살", "최근"};
+        questions_list = new String[]{"ㅂ□□ㄱ", "ㅎㅅㅂ", "ㄱㄴㅂ", "ㅇㅂㄹ", "ㅇㅅㅂㅂㅂ", "ㅁㅅㅅ", "ㄷㅇㅈ", "ㅈㅁ", "ㄸㄷㄱ", "ㅇㅈㅇㄴ"};
+        answers_list = new String[]{"배꼽시계", "화수분", "기념비", "일부러", "오십보백보", "맙소사", "단어장", "지문", "띠동갑", "어제오늘"};
+        hint1_list = new String[]{"식사시간", "보물단지", "기억", "굳이", "차이 없는", "탄식","암기", "손끝", "12살", "최근"};
         hint2_list = new String[]{"", "", "", "", "","", "", "", "", ""};
-        hint3_list = new String[]{"배고픔", "귀신", "업적", "싸움", "이민족", "참견", "공책", "뿌리", "같다", "내일"};
+        hint3_list = new String[]{"배꼽시계", "화수분", "기념비", "일부러", "오십보백보", "맙소사", "단어장", "지문", "띠동갑", "어제오늘"};
         hint4_list = new String[]{"", "", "", "", "", "", "", "", "", ""};
         questions = new ArrayList<String>();
         answers = new ArrayList<String>();
@@ -76,7 +77,7 @@ public class Main12Activity extends GroundActivity {
         hint4 = new ArrayList<String>();
         answerList = new HashSet<String>();
         hintplusList = new ArrayList<String>();
-        message1 = new String ("당신은 천재입니다!" + "\n다음엔 더 어렵고 더 재밌는 문제로 찾아뵙겠습니다.");
+        message1 = new String ("당신은 신입니다!" + "\n다음엔 더 어렵고 더 재밌는 문제로 찾아뵙겠습니다.");
         message2 = new String ("나가기!");
         stage=new String ("level12");
 
@@ -150,6 +151,7 @@ public class Main12Activity extends GroundActivity {
         });
 
 
+
         //When the user swipes the screen left to right, move to next question or previous question.
         view.setOnTouchListener(new GroundActivity.OnSwipeTouchListener(com.hlee1159.android.firstquiz.Main12Activity.this) {
 
@@ -189,44 +191,44 @@ public class Main12Activity extends GroundActivity {
         level.setText("신 단계");
 
         answersCorrectLayout= (RelativeLayout) findViewById(R.id.answersCorrectLayout);
-        answersCorrectLayout.setBackgroundResource(R.drawable.check7);
+        answersCorrectLayout.setBackgroundResource(R.drawable.check12);
 
         answerText = (EditText) findViewById(R.id.AnswerText);
-        answerText.setBackgroundResource(R.drawable.edittext7);
+        answerText.setBackgroundResource(R.drawable.edittext12);
 
         questionView = (TextView) findViewById(R.id.QuestionTextView);
 
         wordbox = (RelativeLayout) findViewById(R.id.wordbox);
-        wordbox.setBackgroundResource(R.drawable.hintbox7);
+        wordbox.setBackgroundResource(R.drawable.hintbox12);
 
         hint1View = (TextView) findViewById(R.id.textView);
         textBar1 = (TextView) findViewById(R.id.textbar1);
-        textBar1.setBackgroundResource(R.drawable.border7);
+        textBar1.setBackgroundResource(R.drawable.border12);
 
         hint2View = (TextView) findViewById(R.id.textView2);
         textBar2 = (TextView) findViewById(R.id.textbar2);
-        textBar2.setBackgroundResource(R.drawable.border4);
+        textBar2.setBackgroundResource(R.drawable.border12);
 
         box = (RelativeLayout) findViewById(R.id.checkbox);
-        box.setBackgroundResource(R.drawable.check7);
+        box.setBackgroundResource(R.drawable.check12);
 
         hint3view = (TextView) findViewById(R.id.textView3);
-        hint3view.setBackgroundResource(R.drawable.hintbox7);
+        hint3view.setBackgroundResource(R.drawable.hintbox12);
         hint4view = (TextView) findViewById(R.id.textView4);
         textBar3 = (TextView) findViewById(R.id.textbar3);
-        textBar3.setBackgroundResource(R.drawable.border1);
+        textBar3.setBackgroundResource(R.drawable.border12);
 
         hintplusview = (RelativeLayout) findViewById(R.id.hintplusview);
-        hintplusview.setBackgroundResource(R.drawable.check7);
+        hintplusview.setBackgroundResource(R.drawable.check12);
 
         answerButton = (Button) findViewById(R.id.AnswerButton);
-        answerButton.setBackgroundResource(R.drawable.check7);
+        answerButton.setBackgroundResource(R.drawable.check12);
 
         forwardLayout=(RelativeLayout) findViewById(R.id.forwardLayout);
-        forwardLayout.setBackgroundResource(R.drawable.check7);
+        forwardLayout.setBackgroundResource(R.drawable.check12);
 
         backLayout=(RelativeLayout) findViewById((R.id.backLayout));
-        backLayout.setBackgroundResource(R.drawable.check7);
+        backLayout.setBackgroundResource(R.drawable.check12);
 
         boxName=(TextView) findViewById(R.id.boxName);
 
@@ -247,6 +249,7 @@ public class Main12Activity extends GroundActivity {
         intent.addCategory(Intent.CATEGORY_HOME);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
+        askForReview();
     }
 
     //This method starts the previous level

@@ -66,7 +66,7 @@ public class MainActivity extends GroundActivity {
             startActivity(intent9);
         } else {
             if (level10 != DEFAULT) {
-                startActivity(intent10);
+                startActivity(intent11);
             } else {
                 if (level9 != DEFAULT) {
                     startActivity(intent10);
@@ -95,7 +95,7 @@ public class MainActivity extends GroundActivity {
                                                 if (level1 != DEFAULT) {
                                                     startActivity(intent2);
                                                 } else {
-                                                    startActivity(intent5);
+                                                    startActivity(intent1);
                                                 }
                                             }
                                         }

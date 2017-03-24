@@ -393,8 +393,8 @@ public class GroundActivity extends Activity {
                 answersCorrect.setText("");
                 answersCorrectImage.setVisibility(View.VISIBLE);
                 SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
-                String level9=preferences.getString("level9", DEFAULT);
-                if (level9!=DEFAULT){
+                String level10=preferences.getString("level10", DEFAULT);
+                if (level10!=DEFAULT){
                     endOfTheGame(message1, message2);
                 }
                 else{endOfTheLevel(message1, message2);}
