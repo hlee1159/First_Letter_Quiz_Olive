@@ -20,6 +20,10 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.ads.AdListener;
+import com.tnkfactory.ad.TnkAdListener;
+import com.tnkfactory.ad.TnkSession;
+
 import java.util.ArrayList;
 import java.util.HashSet;
 
@@ -28,6 +32,12 @@ public class Main9Activity extends GroundActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.game_page_advanced);
+        message3 = "초천재 단계";
+        colorid=getResources().getColor(R.color.color9);
+        checkid=getResources().getIdentifier("check9", "drawable", getPackageName());
+        edittextid=getResources().getIdentifier("edittext9", "drawable", getPackageName());
+        hintboxid=getResources().getIdentifier("hintbox9", "drawable", getPackageName());
+        borderid=getResources().getIdentifier("border9", "drawable", getPackageName());
         setStage();
         Toast.makeText(this, "초천재 등급으로 승급하셨습니다!", Toast.LENGTH_LONG).show();
         init();
@@ -78,9 +88,12 @@ public class Main9Activity extends GroundActivity {
         hint4 = new ArrayList<String>();
         answerList = new HashSet<String>();
         hintplusList = new ArrayList<String>();
-        message1 = new String ("축하합니다!"+"\n초천재 단계를 통과하셨습니다.");
-        message2 = new String ("초인 단계에 도전!");
-        stage=new String ("level9");
+        message1 = "축하합니다!"+"\n초천재 단계를 통과하셨습니다.";
+        message2 = "초인 단계에 도전!";
+        stage="level9";
+        answerAdId = "ca-app-pub-7941816792723862/7219214639";
+        bannerAdId = "ca-app-pub-7941816792723862/1591483438";
+        levelAdId = "ca-app-pub-7941816792723862/7336965830";
 
         //make array lists of all the answer list, hint plust list, questions and all the hints
         for (int index = 0; index < 10; index++) {
@@ -184,65 +197,6 @@ public class Main9Activity extends GroundActivity {
         });
     }
 
-    public void setStage() {
-
-        level=(TextView) findViewById(R.id.level);
-        level.setTextColor(getResources().getColor(R.color.color9));
-        level.setText("초천재 단계");
-
-        answersCorrectLayout= (RelativeLayout) findViewById(R.id.answersCorrectLayout);
-        answersCorrectLayout.setBackgroundResource(R.drawable.check9);
-
-        answerText = (EditText) findViewById(R.id.AnswerText);
-        answerText.setBackgroundResource(R.drawable.edittext9);
-
-        questionView = (TextView) findViewById(R.id.QuestionTextView);
-
-        wordbox = (RelativeLayout) findViewById(R.id.wordbox);
-        wordbox.setBackgroundResource(R.drawable.hintbox9);
-
-        hint1View = (TextView) findViewById(R.id.textView);
-        textBar1 = (TextView) findViewById(R.id.textbar1);
-        textBar1.setBackgroundResource(R.drawable.border9);
-
-        hint2View = (TextView) findViewById(R.id.textView2);
-        textBar2 = (TextView) findViewById(R.id.textbar2);
-        textBar2.setBackgroundResource(R.drawable.border9);
-
-        box = (RelativeLayout) findViewById(R.id.checkbox);
-        box.setBackgroundResource(R.drawable.check9);
-
-        hint3view = (TextView) findViewById(R.id.textView3);
-        hint3view.setBackgroundResource(R.drawable.hintbox9);
-        hint4view = (TextView) findViewById(R.id.textView4);
-        textBar3 = (TextView) findViewById(R.id.textbar3);
-        textBar3.setBackgroundResource(R.drawable.border1);
-
-        hintplusview = (RelativeLayout) findViewById(R.id.hintplusview);
-        hintplusview.setBackgroundResource(R.drawable.check9);
-
-        answerButton = (Button) findViewById(R.id.AnswerButton);
-        answerButton.setBackgroundResource(R.drawable.check9);
-
-        forwardLayout=(RelativeLayout) findViewById(R.id.forwardLayout);
-        forwardLayout.setBackgroundResource(R.drawable.check9);
-
-        backLayout=(RelativeLayout) findViewById((R.id.backLayout));
-        backLayout.setBackgroundResource(R.drawable.check9);
-
-        boxName=(TextView) findViewById(R.id.boxName);
-
-        answersCorrect = (TextView) findViewById(R.id.answersCorrect);
-        answersCorrectImage = (ImageView) findViewById(R.id.answersCorrectImage);
-        answersCorrectButton = (Button) findViewById(R.id.answersCorrectButton);
-        hintWord= (RelativeLayout) findViewById(R.id.hintWord);
-        back = (Button) findViewById(R.id.back);
-        view = (RelativeLayout) findViewById(R.id.view);
-        forward = (Button) findViewById(R.id.forward);
-        hintplus = (Button) findViewById(R.id.hintplus);
-
-    }
-
     //This method starts the next level
     @Override
     public void startNextLevel() {
@@ -277,5 +231,33 @@ public class Main9Activity extends GroundActivity {
 
 
     }
+
+    //This method asks the user whether he or she will view the additional hint by watching a video ad
+    @Override
+    public void additionalHint() {
+
+
+        showCheatInterstitial();
+        cInterstitial.setAdListener(new AdListener() {
+            @Override
+            public void onAdClosed() {
+                hintplusview.setVisibility(View.GONE);
+                hint3view.setVisibility(View.VISIBLE);
+                hintplusList.add(0, questions.get(currentQuestion));
+                answerText.setText(hint3.get(currentQuestion));
+                loadCheatInterstitial();
+
+            }
+        });
+        if (!cInterstitial.isLoaded()){
+            hintplusview.setVisibility(View.GONE);
+            hint3view.setVisibility(View.VISIBLE);
+            hintplusList.add(0, questions.get(currentQuestion));
+            answerText.setText(hint3.get(currentQuestion));
+            loadCheatInterstitial();
+        }
+    }
+
+
 
 }

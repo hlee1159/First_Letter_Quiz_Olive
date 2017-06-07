@@ -17,11 +17,13 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdSize;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.InterstitialAd;
 import java.util.ArrayList;
@@ -33,9 +35,14 @@ import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.reward.RewardItem;
 import com.google.android.gms.ads.reward.RewardedVideoAd;
 import com.google.android.gms.ads.reward.RewardedVideoAdListener;
+import com.google.firebase.appindexing.Action;
+import com.google.firebase.appindexing.FirebaseUserActions;
+import com.google.firebase.appindexing.builders.Actions;
 import com.jirbo.adcolony.AdColony;
 import com.jirbo.adcolony.AdColonyAdapter;
 import com.jirbo.adcolony.AdColonyBundleBuilder;
+import com.tnkfactory.ad.TnkAdListener;
+import com.tnkfactory.ad.TnkSession;
 
 import org.w3c.dom.Text;
 
@@ -46,7 +53,11 @@ public class GroundActivity extends Activity {
     public int currentQuestion;
     public String message1;
     public String message2;
+    public String message3;
     public String stage;
+    public String answerAdId;
+    public String bannerAdId;
+    public String levelAdId;
     public ArrayList<String> questions;
     public ArrayList<String> answers;
     public ArrayList<String> hint1;
@@ -93,6 +104,11 @@ public class GroundActivity extends Activity {
     public RelativeLayout forwardLayout;
     public RelativeLayout backLayout;
     public TextView boxName;
+    public int colorid;
+    public int checkid;
+    public int edittextid;
+    public int hintboxid;
+    public int borderid;
 
     private static Typeface mTypeface = null;
     public static final String DEFAULT="N/A";
@@ -128,14 +144,18 @@ public class GroundActivity extends Activity {
     }
 
     public void loadBanner() {
-        mAdView = (AdView) findViewById(R.id.adView);
+        mAdView = new AdView(this);
+        mAdView.setAdSize(AdSize.SMART_BANNER);
+        mAdView.setAdUnitId(bannerAdId);
         AdRequest adRequest = new AdRequest.Builder().addTestDevice("53A5F3593D943AF2D44924D08C75E278").build();
         // Check the LogCat to get your test device ID
         mAdView.loadAd(adRequest);
+        ((LinearLayout)findViewById(R.id.adView)).addView(mAdView);
+
     }
     public void loadInterstitial() {
         mInterstitial = new InterstitialAd(this);
-        mInterstitial.setAdUnitId("ca-app-pub-7941816792723862/9247062233");
+        mInterstitial.setAdUnitId(levelAdId);
         AdRequest adrequest = new AdRequest.Builder().addTestDevice("53A5F3593D943AF2D44924D08C75E278").build();
         // Check the LogCat to get your test device ID
         mInterstitial.loadAd(adrequest);
@@ -144,12 +164,13 @@ public class GroundActivity extends Activity {
 
     public void loadCheatInterstitial() {
         cInterstitial = new InterstitialAd(this);
-        cInterstitial.setAdUnitId("ca-app-pub-7941816792723862/8366941438");
+        cInterstitial.setAdUnitId(answerAdId);
         AdRequest adrequest = new AdRequest.Builder().addTestDevice("53A5F3593D943AF2D44924D08C75E278").build();
         // Check the LogCat to get your test device ID
         cInterstitial.loadAd(adrequest);
 
     }
+
 
     public void showInterstitial() {
         if (mInterstitial.isLoaded()) {
@@ -186,7 +207,9 @@ public class GroundActivity extends Activity {
                         hintplusview.setVisibility(View.GONE);
                         hint3view.setVisibility(View.VISIBLE);
                         hintplusList.add(0, questions.get(currentQuestion));
+                        answerText.setText(hint3.get(currentQuestion));
                         loadCheatInterstitial();
+
 
                     }
                 });
@@ -194,6 +217,7 @@ public class GroundActivity extends Activity {
                     hintplusview.setVisibility(View.GONE);
                     hint3view.setVisibility(View.VISIBLE);
                     hintplusList.add(0, questions.get(currentQuestion));
+                    answerText.setText(hint3.get(currentQuestion));
                     loadCheatInterstitial();
                 }
             }
@@ -285,6 +309,32 @@ public class GroundActivity extends Activity {
         currentQuestion = currentQuestion - 1;
         manipulateBox();
         showQuestion();
+    }
+
+    /**
+     * ATTENTION: This was auto-generated to implement the App Indexing API.
+     * See https://g.co/AppIndexing/AndroidStudio for more information.
+     */
+    public Action getIndexApiAction() {
+        return Actions.newView("Ground", "http://[ENTER-YOUR-URL-HERE]");
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+
+        // ATTENTION: This was auto-generated to implement the App Indexing API.
+        // See https://g.co/AppIndexing/AndroidStudio for more information.
+        FirebaseUserActions.getInstance().start(getIndexApiAction());
+    }
+
+    @Override
+    public void onStop() {
+
+        // ATTENTION: This was auto-generated to implement the App Indexing API.
+        // See https://g.co/AppIndexing/AndroidStudio for more information.
+        FirebaseUserActions.getInstance().end(getIndexApiAction());
+        super.onStop();
     }
 
 
@@ -392,12 +442,7 @@ public class GroundActivity extends Activity {
             if (answerList.size() >= 10) {
                 answersCorrect.setText("");
                 answersCorrectImage.setVisibility(View.VISIBLE);
-                SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
-                String level10=preferences.getString("level10", DEFAULT);
-                if (level10!=DEFAULT){
-                    endOfTheGame(message1, message2);
-                }
-                else{endOfTheLevel(message1, message2);}
+                endOfTheLevel(message1, message2);
                 return;
             }
             //if the user solves the last question first, show the previous question
@@ -535,7 +580,7 @@ public class GroundActivity extends Activity {
     //This method asks the user what to do when the level is ended
     public void endOfTheGame(String string1, String string2) {
         AlertDialog.Builder endGame = new AlertDialog.Builder(this);
-        endGame.setCancelable(false);
+        endGame.setCancelable(true);
         endGame.setMessage(string1);
 
         endGame.setPositiveButton("리뷰 작성하기", new DialogInterface.OnClickListener() {
@@ -579,6 +624,68 @@ public class GroundActivity extends Activity {
         AlertDialog alert = endGame.create();
         alert.show();
     }
+
+
+    // This method draws the set
+    public void setStage() {
+
+        level=(TextView) findViewById(R.id.level);
+        level.setTextColor(colorid);
+        level.setText(message3);
+
+        answersCorrectLayout= (RelativeLayout) findViewById(R.id.answersCorrectLayout);
+        answersCorrectLayout.setBackgroundResource(checkid);
+
+        answerText = (EditText) findViewById(R.id.AnswerText);
+        answerText.setBackgroundResource(edittextid);
+
+        questionView = (TextView) findViewById(R.id.QuestionTextView);
+
+        wordbox = (RelativeLayout) findViewById(R.id.wordbox);
+        wordbox.setBackgroundResource(hintboxid);
+
+        hint1View = (TextView) findViewById(R.id.textView);
+        textBar1 = (TextView) findViewById(R.id.textbar1);
+        textBar1.setBackgroundResource(borderid);
+
+        hint2View = (TextView) findViewById(R.id.textView2);
+        textBar2 = (TextView) findViewById(R.id.textbar2);
+        textBar2.setBackgroundResource(borderid);
+
+        box = (RelativeLayout) findViewById(R.id.checkbox);
+        box.setBackgroundResource(checkid);
+
+        hint3view = (TextView) findViewById(R.id.textView3);
+        hint3view.setBackgroundResource(hintboxid);
+        hint4view = (TextView) findViewById(R.id.textView4);
+        textBar3 = (TextView) findViewById(R.id.textbar3);
+        textBar3.setBackgroundResource(borderid);
+
+        hintplusview = (RelativeLayout) findViewById(R.id.hintplusview);
+        hintplusview.setBackgroundResource(checkid);
+
+        answerButton = (Button) findViewById(R.id.AnswerButton);
+        answerButton.setBackgroundResource(checkid);
+
+        forwardLayout=(RelativeLayout) findViewById(R.id.forwardLayout);
+        forwardLayout.setBackgroundResource(checkid);
+
+        backLayout=(RelativeLayout) findViewById((R.id.backLayout));
+        backLayout.setBackgroundResource(checkid);
+
+        boxName=(TextView) findViewById(R.id.boxName);
+
+        answersCorrect = (TextView) findViewById(R.id.answersCorrect);
+        answersCorrectImage = (ImageView) findViewById(R.id.answersCorrectImage);
+        answersCorrectButton = (Button) findViewById(R.id.answersCorrectButton);
+        hintWord= (RelativeLayout) findViewById(R.id.hintWord);
+        back = (Button) findViewById(R.id.back);
+        view = (RelativeLayout) findViewById(R.id.view);
+        forward = (Button) findViewById(R.id.forward);
+        hintplus = (Button) findViewById(R.id.hintplus);
+    }
+
+
 
 
 

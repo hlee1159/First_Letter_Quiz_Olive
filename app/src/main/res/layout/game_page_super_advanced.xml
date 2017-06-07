@@ -248,23 +248,22 @@
     </RelativeLayout>
 
 
-    <com.google.android.gms.ads.AdView
+    <LinearLayout
         android:id="@+id/adView"
+        android:orientation="vertical"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/AnswerButton"
-        ads:adSize="BANNER"
-        ads:adUnitId="@string/beginner"
         >
-    </com.google.android.gms.ads.AdView>
+    </LinearLayout>
     <Button
         android:layout_width="100dp"
         android:layout_height="60dp"
         android:layout_below="@+id/wordbox"
         android:layout_marginTop="25dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="5dp"
+        android:layout_marginBottom="2dp"
         android:id="@+id/AnswerButton"
         android:textColor="#FFFFFF"
         android:background="@drawable/check5"
@@ -279,7 +278,7 @@
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/wordbox"
         android:layout_marginTop="25dp"
-        android:layout_marginBottom="5dp"
+        android:layout_marginBottom="2dp"
         android:background="@drawable/check5"
         android:layout_marginLeft="30dp"
         android:clickable="true"
@@ -307,7 +306,7 @@
         android:layout_marginTop="25dp"
         android:layout_toLeftOf="@id/AnswerButton"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="5dp"
+        android:layout_marginBottom="2dp"
         android:layout_marginRight="30dp"
         android:background="@drawable/check5"
         android:clickable="true"

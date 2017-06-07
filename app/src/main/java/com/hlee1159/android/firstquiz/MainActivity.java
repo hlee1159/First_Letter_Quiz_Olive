@@ -49,6 +49,14 @@ public class MainActivity extends GroundActivity {
         String level10 = preferences.getString("level10", DEFAULT);
         String level11 = preferences.getString("level11", DEFAULT);
         String level12 = preferences.getString("level12", DEFAULT);
+        String level13 = preferences.getString("level13", DEFAULT);
+        String level14 = preferences.getString("level14", DEFAULT);
+        String level15 = preferences.getString("level15", DEFAULT);
+        String level16 = preferences.getString("level16", DEFAULT);
+        String level17 = preferences.getString("level17", DEFAULT);
+        String level18 = preferences.getString("level18", DEFAULT);
+        String level19 = preferences.getString("level19", DEFAULT);
+        String level20 = preferences.getString("level20", DEFAULT);
 
         Intent intent1 = new Intent(MainActivity.this, Main1Activity.class);
         Intent intent2 = new Intent(MainActivity.this, Main2Activity.class);
@@ -62,40 +70,84 @@ public class MainActivity extends GroundActivity {
         Intent intent10 = new Intent(MainActivity.this, Main10Activity.class);
         Intent intent11 = new Intent(MainActivity.this, Main11Activity.class);
         Intent intent12 = new Intent(MainActivity.this, Main12Activity.class);
-        if (level11 != DEFAULT) {
-            startActivity(intent9);
+        Intent intent13 = new Intent(MainActivity.this, Main13Activity.class);
+        Intent intent14 = new Intent(MainActivity.this, Main14Activity.class);
+        Intent intent15 = new Intent(MainActivity.this, Main15Activity.class);
+        Intent intent16 = new Intent(MainActivity.this, Main16Activity.class);
+        Intent intent17 = new Intent(MainActivity.this, Main17Activity.class);
+        Intent intent18 = new Intent(MainActivity.this, Main18Activity.class);
+        Intent intent19 = new Intent(MainActivity.this, Main19Activity.class);
+        Intent intent20 = new Intent(MainActivity.this, Main20Activity.class);
+
+        if (level19 != DEFAULT) {
+            startActivity(intent20);
         } else {
-            if (level10 != DEFAULT) {
-                startActivity(intent11);
+            if (level18 != DEFAULT) {
+                startActivity(intent19);
             } else {
-                if (level9 != DEFAULT) {
-                    startActivity(intent10);
+                if (level17 != DEFAULT) {
+                    startActivity(intent18);
                 } else {
-                    if (level8 != DEFAULT) {
-                        startActivity(intent9);
+                    if (level16 != DEFAULT) {
+                        startActivity(intent17);
                     } else {
-                        if (level7 != DEFAULT) {
-                            startActivity(intent8);
+                        if (level15 != DEFAULT) {
+                            startActivity(intent16);
                         } else {
-                            if (level6 != DEFAULT) {
-                                startActivity(intent7);
+                            if (level14 != DEFAULT) {
+                                startActivity(intent15);
                             } else {
-                                if (level5 != DEFAULT) {
-                                    startActivity(intent6);
+
+                                if (level13 != DEFAULT) {
+                                    startActivity(intent14);
                                 } else {
-                                    if (level4 != DEFAULT) {
-                                        startActivity(intent5);
+
+                                    if (level12 != DEFAULT) {
+                                        startActivity(intent13);
                                     } else {
-                                        if (level3 != DEFAULT) {
-                                            startActivity(intent4);
+
+                                        if (level11 != DEFAULT) {
+                                            startActivity(intent12);
                                         } else {
-                                            if (level2 != DEFAULT) {
-                                                startActivity(intent3);
+                                            if (level10 != DEFAULT) {
+                                                startActivity(intent11);
                                             } else {
-                                                if (level1 != DEFAULT) {
-                                                    startActivity(intent2);
+                                                if (level9 != DEFAULT) {
+                                                    startActivity(intent10);
                                                 } else {
-                                                    startActivity(intent1);
+                                                    if (level8 != DEFAULT) {
+                                                        startActivity(intent9);
+                                                    } else {
+                                                        if (level7 != DEFAULT) {
+                                                            startActivity(intent8);
+                                                        } else {
+                                                            if (level6 != DEFAULT) {
+                                                                startActivity(intent7);
+                                                            } else {
+                                                                if (level5 != DEFAULT) {
+                                                                    startActivity(intent6);
+                                                                } else {
+                                                                    if (level4 != DEFAULT) {
+                                                                        startActivity(intent5);
+                                                                    } else {
+                                                                        if (level3 != DEFAULT) {
+                                                                            startActivity(intent4);
+                                                                        } else {
+                                                                            if (level2 != DEFAULT) {
+                                                                                startActivity(intent3);
+                                                                            } else {
+                                                                                if (level1 != DEFAULT) {
+                                                                                    startActivity(intent2);
+                                                                                } else {
+                                                                                    startActivity(intent1);
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
                                                 }
                                             }
                                         }

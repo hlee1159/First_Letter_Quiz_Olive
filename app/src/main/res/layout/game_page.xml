@@ -85,7 +85,7 @@
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/QuestionTextView"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/hintbox5"
         android:id="@+id/wordbox"
         android:layout_centerHorizontal="true"
@@ -107,7 +107,7 @@
             android:layout_width="120dp"
             android:layout_height="60dp"
             android:layout_alignParentLeft="true"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="0dp"
             android:layout_below="@+id/boxName"
             android:id="@+id/hintWord"
             >
@@ -139,7 +139,7 @@
             android:layout_width="120dp"
             android:layout_height="60dp"
             android:layout_alignParentRight="true"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="0dp"
             android:layout_below="@+id/boxName"
             >
             <TextView
@@ -170,8 +170,9 @@
             android:layout_height="60dp"
             android:layout_centerHorizontal="true"
             android:layout_below="@+id/hintWord"
-            android:layout_marginBottom="5dp"
-            android:layout_marginTop="25dp"
+            android:layout_marginBottom="15dp"
+            android:layout_marginTop="0dp"
+            android:id="@+id/hintplusplus"
             >
             <TextView
                 android:layout_width="120dp"
@@ -199,11 +200,11 @@
         </RelativeLayout>
 
         <RelativeLayout
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_below="@+id/hintWord"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_below="@+id/hintplusplus"
             android:layout_marginBottom="5dp"
-            android:layout_marginTop="35dp"
+            android:layout_marginTop="0dp"
             android:layout_centerHorizontal="true"
             android:id="@+id/checkbox"
             android:layout_marginLeft="50dp"
@@ -211,8 +212,8 @@
             android:visibility="invisible">
 
             <ImageView
-                android:layout_height="0dp"
-                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_width="60dp"
                 android:background="@drawable/check"
                 android:scaleType="centerCrop"
                 android:gravity="center"
@@ -223,15 +224,15 @@
         </RelativeLayout>
 
         <TextView
-            android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_width="200dp"
+            android:layout_height="50dp"
             android:gravity="center"
-            android:textSize="0dp"
+            android:textSize="30dp"
             android:id="@+id/textView3"
             android:layout_centerHorizontal="true"
-            android:layout_below="@+id/hintWord"
+            android:layout_below="@+id/hintplusplus"
             android:layout_marginBottom="5dp"
-            android:layout_marginTop="35dp"
+            android:layout_marginTop="0dp"
             android:textColor="#727272"
             android:textStyle="bold"
             android:background="@drawable/hintbox5"
@@ -239,13 +240,14 @@
             />
 
         <RelativeLayout
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginBottom="30dp"
-            android:layout_marginTop="35dp"
-            android:layout_below="@+id/hintWord"
+            android:layout_width="60dp"
+            android:layout_height="50dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="0dp"
+            android:layout_below="@+id/hintplusplus"
             android:id="@+id/hintplusview"
             android:background="@drawable/check5"
+            android:clickable="true"
             android:layout_centerHorizontal="true"
 
             >
@@ -256,23 +258,13 @@
                 android:id="@+id/hintplus"
                 />
             <ImageView
-                android:layout_height="0dp"
-                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_width="40dp"
                 android:background="@drawable/lightbulb"
                 android:scaleType="centerCrop"
                 android:layout_centerVertical="true"
-                android:layout_alignParentRight="true"
-                android:layout_marginRight="3dp"
-                />
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:text="+"
-                android:textSize="30dp"
-                android:gravity="center_vertical"
-                android:layout_alignParentLeft="true"
-                android:textColor="#FFFFFF"
-                android:layout_marginLeft="6dp"
+                android:layout_centerHorizontal="true"
+
                 />
 
         </RelativeLayout>
@@ -284,23 +276,22 @@
     </RelativeLayout>
 
 
-    <com.google.android.gms.ads.AdView
+    <LinearLayout
         android:id="@+id/adView"
+        android:orientation="vertical"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/AnswerButton"
-        ads:adSize="BANNER"
-        ads:adUnitId="@string/beginner"
         >
-    </com.google.android.gms.ads.AdView>
+    </LinearLayout>
     <Button
         android:layout_width="100dp"
         android:layout_height="60dp"
         android:layout_below="@+id/wordbox"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="10dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="5dp"
+        android:layout_marginBottom="2dp"
         android:id="@+id/AnswerButton"
         android:textColor="#FFFFFF"
         android:background="@drawable/check5"
@@ -314,8 +305,8 @@
         android:layout_toRightOf="@id/AnswerButton"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/wordbox"
-        android:layout_marginTop="25dp"
-        android:layout_marginBottom="5dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="2dp"
         android:background="@drawable/check5"
         android:layout_marginLeft="30dp"
         android:clickable="true"
@@ -340,10 +331,10 @@
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_below="@+id/wordbox"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="10dp"
         android:layout_toLeftOf="@id/AnswerButton"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="5dp"
+        android:layout_marginBottom="2dp"
         android:layout_marginRight="30dp"
         android:background="@drawable/check5"
         android:clickable="true"

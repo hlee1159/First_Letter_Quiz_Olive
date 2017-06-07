@@ -26,6 +26,9 @@ import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.InterstitialAd;
+import com.tnkfactory.ad.TnkAdListener;
+import com.tnkfactory.ad.TnkSession;
+
 import android.content.Context;
 import android.view.GestureDetector;
 import android.view.GestureDetector.SimpleOnGestureListener;
@@ -48,6 +51,12 @@ public class Main5Activity extends GroundActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.game_page_intermediate);
+        message3 = "영웅 단계";
+        colorid=getResources().getColor(R.color.color5);
+        checkid=getResources().getIdentifier("check5", "drawable", getPackageName());
+        edittextid=getResources().getIdentifier("edittext5", "drawable", getPackageName());
+        hintboxid=getResources().getIdentifier("hintbox5", "drawable", getPackageName());
+        borderid=getResources().getIdentifier("border5", "drawable", getPackageName());
         setStage();
         Toast.makeText(this, "영웅 등급으로 승급하셨습니다!", Toast.LENGTH_LONG).show();
         init();
@@ -84,11 +93,11 @@ public class Main5Activity extends GroundActivity {
     }
 
     public void init() {
-        questions_list = new String[]{"ㄴㅍㅂㅈ", "ㄷㄷㅇ", "ㅁㄹㅅ", "ㄱㅇㅁ", "ㅁㅍㅅ", "ㅁㄱㅇ", "ㅅㅂㄹ", "ㅂㅊㅂ", "ㅎㅈㅅ", "ㅅㅌㅂㄹ"};
-        answers_list = new String[]{"나팔바지", "됨됨이", "모르쇠", "걸음마", "말풍선", "물갈이", "신바람", "불치병", "현주소", "사탕발림"};
-        hint1_list = new String[]{"넓어지다", "성품", "청문회", "떼다", "만화", "변화", "덩실덩실", "환자", "실태","달콤한"};
-        hint2_list = new String[]{"패션", "사람~", "시치미", "아기", "대사", "구조조정", "~나다", "고질", "현실", "아부"};
-        hint3_list = new String[]{"나팔바지", "됨됨이", "모르쇠", "걸음마", "말풍선", "물갈이", "신바람", "불치병", "현주소", "사탕발림"};
+        questions_list = new String[]{"ㄴㅍㅂㅈ", "ㄷㄷㅇ", "ㅅㅅㄷㅂ", "ㄱㅇㅁ", "ㅁㅍㅅ", "ㅁㄱㅇ", "ㅇㄱㅅㅇㅌㅈ", "ㅂㅊㅂ", "ㅎㅈㅅ", "ㅅㅌㅂㄹ"};
+        answers_list = new String[]{"나팔바지", "됨됨이", "신신당부", "걸음마", "말풍선", "물갈이", "일거수일투족", "불치병", "현주소", "사탕발림"};
+        hint1_list = new String[]{"넓어지다", "성품", "거듭해", "떼다", "만화", "변화", "동작", "환자", "실태","달콤한"};
+        hint2_list = new String[]{"패션", "인격", "간곡히", "아기", "대사", "구조조정", "하나하나", "고질", "현실", "아부"};
+        hint3_list = new String[]{"나팔바지", "됨됨이", "신신당부", "걸음마", "말풍선", "물갈이", "일거수일투족", "불치병", "현주소", "사탕발림"};
         hint4_list = new String[]{"", "", "", "", "", "", "", "", "", ""};
         questions = new ArrayList<String>();
         answers = new ArrayList<String>();
@@ -98,9 +107,12 @@ public class Main5Activity extends GroundActivity {
         hint4 = new ArrayList<String>();
         answerList = new HashSet<String>();
         hintplusList = new ArrayList<String>();
-        message1 = new String ("축하합니다!"+"\n영웅 단계를 통과하셨습니다.");
-        message2 = new String ("고수 단계에 도전!");
-        stage=new String ("level5");
+        message1 = "축하합니다!"+"\n영웅 단계를 통과하셨습니다.";
+        message2 = "고수 단계에 도전!";
+        stage= "level5";
+        answerAdId = "ca-app-pub-7941816792723862/1312281839";
+        bannerAdId = "ca-app-pub-7941816792723862/5765055834";
+        levelAdId = "ca-app-pub-7941816792723862/3714585834";
 
         //make array lists of all the answer list, hint plust list, questions and all the hints
         for (int index = 0; index < 10; index++) {
@@ -204,64 +216,6 @@ public class Main5Activity extends GroundActivity {
         });
     }
 
-    public void setStage() {
-
-        level=(TextView) findViewById(R.id.level);
-        level.setTextColor(getResources().getColor(R.color.color5));
-        level.setText("영웅 단계");
-
-        answersCorrectLayout= (RelativeLayout) findViewById(R.id.answersCorrectLayout);
-        answersCorrectLayout.setBackgroundResource(R.drawable.check5);
-
-        answerText = (EditText) findViewById(R.id.AnswerText);
-        answerText.setBackgroundResource(R.drawable.edittext5);
-
-        questionView = (TextView) findViewById(R.id.QuestionTextView);
-
-        wordbox = (RelativeLayout) findViewById(R.id.wordbox);
-        wordbox.setBackgroundResource(R.drawable.hintbox5);
-
-        hint1View = (TextView) findViewById(R.id.textView);
-        textBar1 = (TextView) findViewById(R.id.textbar1);
-        textBar1.setBackgroundResource(R.drawable.border5);
-
-        hint2View = (TextView) findViewById(R.id.textView2);
-        textBar2 = (TextView) findViewById(R.id.textbar2);
-        textBar2.setBackgroundResource(R.drawable.border5);
-
-        box = (RelativeLayout) findViewById(R.id.checkbox);
-        box.setBackgroundResource(R.drawable.check5);
-
-        hint3view = (TextView) findViewById(R.id.textView3);
-        hint3view.setBackgroundResource(R.drawable.hintbox5);
-        hint4view = (TextView) findViewById(R.id.textView4);
-        textBar3 = (TextView) findViewById(R.id.textbar3);
-        textBar3.setBackgroundResource(R.drawable.border1);
-
-        hintplusview = (RelativeLayout) findViewById(R.id.hintplusview);
-        hintplusview.setBackgroundResource(R.drawable.check5);
-
-        answerButton = (Button) findViewById(R.id.AnswerButton);
-        answerButton.setBackgroundResource(R.drawable.check5);
-
-        forwardLayout=(RelativeLayout) findViewById(R.id.forwardLayout);
-        forwardLayout.setBackgroundResource(R.drawable.check5);
-
-        backLayout=(RelativeLayout) findViewById((R.id.backLayout));
-        backLayout.setBackgroundResource(R.drawable.check5);
-
-        boxName=(TextView) findViewById(R.id.boxName);
-
-        answersCorrect = (TextView) findViewById(R.id.answersCorrect);
-        answersCorrectImage = (ImageView) findViewById(R.id.answersCorrectImage);
-        answersCorrectButton = (Button) findViewById(R.id.answersCorrectButton);
-        hintWord= (RelativeLayout) findViewById(R.id.hintWord);
-        back = (Button) findViewById(R.id.back);
-        view = (RelativeLayout) findViewById(R.id.view);
-        forward = (Button) findViewById(R.id.forward);
-        hintplus = (Button) findViewById(R.id.hintplus);
-    }
-
     //This method starts the next level
     @Override
     public void startNextLevel() {
@@ -296,4 +250,7 @@ public class Main5Activity extends GroundActivity {
 
 
     }
+
+
+
 }

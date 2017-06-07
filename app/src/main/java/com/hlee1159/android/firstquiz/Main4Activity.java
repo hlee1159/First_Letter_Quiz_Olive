@@ -27,6 +27,9 @@ import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.InterstitialAd;
+import com.tnkfactory.ad.TnkAdListener;
+import com.tnkfactory.ad.TnkSession;
+
 import android.content.Context;
 import android.view.GestureDetector;
 import android.view.GestureDetector.SimpleOnGestureListener;
@@ -49,12 +52,19 @@ public class Main4Activity extends GroundActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.game_page);
+        message3 = "최우수 단계";
+        colorid=getResources().getColor(R.color.color4);
+        checkid=getResources().getIdentifier("check4", "drawable", getPackageName());
+        edittextid=getResources().getIdentifier("edittext4", "drawable", getPackageName());
+        hintboxid=getResources().getIdentifier("hintbox4", "drawable", getPackageName());
+        borderid=getResources().getIdentifier("border4", "drawable", getPackageName());
         setStage();
         Toast.makeText(this, "최우수 등급으로 승급하셨습니다!", Toast.LENGTH_LONG).show();
         init();
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
         loadBanner();
         loadInterstitial();
+        loadCheatInterstitial();
         enableSkip();
     }
 
@@ -83,12 +93,12 @@ public class Main4Activity extends GroundActivity {
     }
 
     public void init() {
-        questions_list = new String[]{"ㄱㅃㄱ", "ㅅㅍㄱ", "ㄱㄴ", "ㅁㅆ", "ㄱㅂ", "ㄱㅌㅈㄹ", "ㅂㅇㅎㄹ", "ㅁㅂㄱ", "ㅈㅂㅅ", "ㅂㄹ"};
-        answers_list = new String[]{"곱빼기", "상품권", "그늘", "말썽", "고비", "교통정리", "바야흐로", "맛보기", "조바심", "버릇"};
-        hint1_list = new String[]{"한 그릇", "교환", "어둠", "골칫거리", "고개", "분쟁 해결","지금", "시험 삼아", "애", "반복"};
-        hint2_list = new String[]{"두 그릇", "선물", "휴식", "물의", "위기","정리", "한창", "조금", "안달복달", "굳다"};
-        hint3_list = new String[]{"짜장면", "백화점", "나무", "~꾸러기", "넘기다", "경찰", "때는 ~", "시식", "조마조마", "습관"};
-        hint4_list = new String[]{"짜장면", "백화점", "나무", "~꾸러기", "넘기다", "경찰", "때는 ~", "시식", "조마조마", "습관"};
+        questions_list = new String[]{"ㅎㅅㅇㅂ", "ㅅㅍㄱ", "ㄱㄴ", "ㅁㅆ", "ㄱㅂ", "ㄱㅌㅈㄹ", "ㅂㅇㅎㄹ", "ㅁㅂㄱ", "ㅈㅂㅅ", "ㅂㄹ"};
+        answers_list = new String[]{"허수아비", "상품권", "그늘", "말썽", "고비", "교통정리", "바야흐로", "맛보기", "조바심", "버릇"};
+        hint1_list = new String[]{"논밭", "교환", "어둠", "골칫거리", "고개", "분쟁 해결","지금", "시험 삼아", "애", "반복"};
+        hint2_list = new String[]{"무능한", "선물", "휴식", "물의", "위기","정리", "한창", "조금", "안달복달", "굳다"};
+        hint3_list = new String[]{"허수아비", "상품권", "그늘", "말썽", "고비", "교통정리", "바야흐로", "맛보기", "조바심", "버릇"};
+        hint4_list = new String[]{"꼭두각시", "백화점", "나무", "~꾸러기", "넘기다", "경찰", "때는 ~", "시식", "조마조마", "습관"};
         questions = new ArrayList<String>();
         answers = new ArrayList<String>();
         hint1 = new ArrayList<String>();
@@ -97,9 +107,12 @@ public class Main4Activity extends GroundActivity {
         hint4 = new ArrayList<String>();
         answerList = new HashSet<String>();
         hintplusList = new ArrayList<String>();
-        message1 = new String ("축하합니다!"+"\n최우수 단계를 통과하셨습니다.");
-        message2 = new String ("영웅 단계에 도전!");
-        stage=new String ("level4");
+        message1 = "축하합니다!"+"\n최우수 단계를 통과하셨습니다.";
+        message2 = "영웅 단계에 도전!";
+        stage= "level4";
+        answerAdId = "ca-app-pub-7941816792723862/8835548633";
+        bannerAdId = "ca-app-pub-7941816792723862/2237852634";
+        levelAdId = "ca-app-pub-7941816792723862/9761119431";
 
         //make array lists of all the answer list, hint plust list, questions and all the hints
         for (int index = 0; index < 10; index++) {
@@ -203,64 +216,6 @@ public class Main4Activity extends GroundActivity {
         });
     }
 
-    public void setStage() {
-
-        level=(TextView) findViewById(R.id.level);
-        level.setTextColor(getResources().getColor(R.color.color4));
-        level.setText("최우수 단계");
-
-        answersCorrectLayout= (RelativeLayout) findViewById(R.id.answersCorrectLayout);
-        answersCorrectLayout.setBackgroundResource(R.drawable.check4);
-
-        answerText = (EditText) findViewById(R.id.AnswerText);
-        answerText.setBackgroundResource(R.drawable.edittext4);
-
-        questionView = (TextView) findViewById(R.id.QuestionTextView);
-
-        wordbox = (RelativeLayout) findViewById(R.id.wordbox);
-        wordbox.setBackgroundResource(R.drawable.hintbox4);
-
-        hint1View = (TextView) findViewById(R.id.textView);
-        textBar1 = (TextView) findViewById(R.id.textbar1);
-        textBar1.setBackgroundResource(R.drawable.border4);
-
-        hint2View = (TextView) findViewById(R.id.textView2);
-        textBar2 = (TextView) findViewById(R.id.textbar2);
-        textBar2.setBackgroundResource(R.drawable.border4);
-
-        box = (RelativeLayout) findViewById(R.id.checkbox);
-        box.setBackgroundResource(R.drawable.check4);
-
-        hint3view = (TextView) findViewById(R.id.textView3);
-        hint3view.setBackgroundResource(R.drawable.hintbox4);
-        hint4view = (TextView) findViewById(R.id.textView4);
-        textBar3 = (TextView) findViewById(R.id.textbar3);
-        textBar3.setBackgroundResource(R.drawable.border4);
-
-        hintplusview = (RelativeLayout) findViewById(R.id.hintplusview);
-        hintplusview.setBackgroundResource(R.drawable.check4);
-
-        answerButton = (Button) findViewById(R.id.AnswerButton);
-        answerButton.setBackgroundResource(R.drawable.check4);
-
-        forwardLayout=(RelativeLayout) findViewById(R.id.forwardLayout);
-        forwardLayout.setBackgroundResource(R.drawable.check4);
-
-        backLayout=(RelativeLayout) findViewById((R.id.backLayout));
-        backLayout.setBackgroundResource(R.drawable.check4);
-
-        boxName=(TextView) findViewById(R.id.boxName);
-
-        answersCorrect = (TextView) findViewById(R.id.answersCorrect);
-        answersCorrectImage = (ImageView) findViewById(R.id.answersCorrectImage);
-        answersCorrectButton = (Button) findViewById(R.id.answersCorrectButton);
-        hintWord= (RelativeLayout) findViewById(R.id.hintWord);
-        back = (Button) findViewById(R.id.back);
-        view = (RelativeLayout) findViewById(R.id.view);
-        forward = (Button) findViewById(R.id.forward);
-        hintplus = (Button) findViewById(R.id.hintplus);
-    }
-
     //This method starts the next level
     @Override
     public void startNextLevel() {
@@ -295,4 +250,5 @@ public class Main4Activity extends GroundActivity {
 
 
     }
+
 }

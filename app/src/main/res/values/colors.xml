@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <item name="white" type="color">#FFFFFFFF</item>
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+
     <item name="color1" type="color">#009688</item>
     <!--   teal  -->
 
-    <item name="color2" type="color">#2196F3</item>
-    <!--   blue  -->
+    <item name="color2" type="color">#03A9F4</item>
+    <!--   lightblue  -->
 
     <item name="color3" type="color">#3F51B5</item>
     <!--   indigo  -->
@@ -18,28 +20,50 @@
     <item name="color5" type="color">#8BC34A</item>
     <!--   lightgreen  -->
 
-    <item name="color10" type="color">#D32F2F</item>
-    <!--   red  -->
-
-    <item name="white" type="color">#FFFFFFFF</item>
-
-    <item name="color9" type="color">#455A64</item>
-    <!--   bluegrey  -->
-
-    <item name="color12" type="color">#9E9E9E</item>
-    <!--   grey  -->
-
-    <item name="color8" type="color">#FFC107</item>
-    <!--   amber  -->
+    <item name="color6" type="color">#673AB7</item>
+    <!--   deeppurple  -->
 
     <item name="color7" type="color">#CDDC39</item>
     <!--   lime  -->
 
-    <item name="color6" type="color">#673AB7</item>
-    <!--   deeppurple  -->
+    <item name="color8" type="color">#2196F3</item>
+    <!--   blue  -->
+
+    <item name="color9" type="color">#455A64</item>
+    <!--   bluegrey  -->
+
+    <item name="color10" type="color">#795548</item>
+    <!--   brown  -->
 
     <item name="color11" type="color">#FF9800</item>
     <!--   orange  -->
+
+    <item name="color12" type="color">#4CAF50</item>
+    <!--   green  -->
+
+    <item name="color13" type="color">#9E9E9E</item>
+    <!--   grey  -->
+
+    <item name="color14" type="color">#01579B</item>
+    <!--   darkblue  -->
+
+    <item name="color15" type="color">#D32F2F</item>
+    <!--   red  -->
+
+    <item name="color16" type="color">#FFC107</item>
+    <!--   amber  -->
+
+    <item name="color17" type="color">#2196F3</item>
+    <!--   blue  -->
+
+    <item name="color18" type="color">#2196F3</item>
+    <!--   blue  -->
+
+    <item name="color19" type="color">#2196F3</item>
+    <!--   blue  -->
+
+    <item name="color20" type="color">#2196F3</item>
+    <!--   blue  -->
 
     <integer-array name="androidcolors">
         <item>@color/color1</item>
@@ -55,6 +79,10 @@
         <item>@color/color10</item>
         <item>@color/color11</item>
         <item>@color/color12</item>
+        <item>@color/color13</item>
+        <item>@color/color14</item>
+        <item>@color/color15</item>
+        <item>@color/color16</item>
     </integer-array>
 
 </resources>
